@@ -1,0 +1,46 @@
+{
+  "structures": [
+    {
+      "structure": "create_structures_overhaul:oakwindmill",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:sprucewindmill",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:acaciawindmill",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:cherrywindmill",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:birchwindmill",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:coopergreenhouse",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:copperstorage",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:copperligthningtower",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:filler",
+      "weight": 3
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 50,
+    "separation": 6,
+    "salt": 1173713707
+  }
+}
