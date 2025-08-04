@@ -4,7 +4,7 @@ license="MIT License"
 
 [[mods]]
 modId="create_structures_overhaul"
-version="0.2.2"
+version="0.2.3"
 displayName="Create: Structures overhaul"
 displayURL="https://legacy.curseforge.com/minecraft/mc-mods/create-structures-overrhaul"
 logoFile="logo.png"
