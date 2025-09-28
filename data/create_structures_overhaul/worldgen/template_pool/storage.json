@@ -1,12 +1,12 @@
 {
-  "name": "create_structures_overhaul:copperstorage",
+  "name": "create_structures_overhaul:storage",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "create_structures_overhaul:copper_storage",
+        "location": "create_structures_overhaul:storage",
         "projection": "rigid",
         "processors": {
           "processors": [

@@ -21,26 +21,27 @@
       "weight": 1
     },
     {
-      "structure": "create_structures_overhaul:coopergreenhouse",
+      "structure": "create_structures_overhaul:greenhouse",
       "weight": 1
     },
     {
-      "structure": "create_structures_overhaul:copperstorage",
+      "structure": "create_structures_overhaul:storage",
       "weight": 1
     },
     {
-      "structure": "create_structures_overhaul:copperligthningtower",
+      "structure": "create_structures_overhaul:lightningrodtower",
       "weight": 1
     },
     {
       "structure": "create_structures_overhaul:filler",
-      "weight": 3
+      "weight": 8
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "spacing": 50,
+    "spacing": 63,
     "separation": 6,
+    "spread_type": "triangular",
     "salt": 1173713707
   }
 }

@@ -1,12 +1,12 @@
 {
-  "name": "create_structures_overhaul:copperligthningrodtower",
+  "name": "create_structures_overhaul:greenhouse",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "create_structures_overhaul:ligthning_rod_towers",
+        "location": "create_structures_overhaul:greenhouse",
         "projection": "rigid",
         "processors": {
           "processors": [
