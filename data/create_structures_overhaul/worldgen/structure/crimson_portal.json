@@ -1,6 +1,6 @@
 {
   "type": "minecraft:jigsaw",
-  "start_pool": "create_structures_overhaul:cherrywindmill",
+  "start_pool": "create_structures_overhaul:crimson_portal",
   "size": 1,
   "max_distance_from_center": 64,
   "spawn_overrides": {},
