@@ -21,6 +21,26 @@
       "weight": 1
     },
     {
+      "structure": "create_structures_overhaul:post",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:crimson_portal",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:miner_hut",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:tower",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:camp",
+      "weight": 1
+    },
+    {
       "structure": "create_structures_overhaul:greenhouse",
       "weight": 1
     },
@@ -39,7 +59,7 @@
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "spacing": 63,
+    "spacing": 30,
     "separation": 6,
     "spread_type": "triangular",
     "salt": 1173713707
