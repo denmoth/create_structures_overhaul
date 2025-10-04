@@ -1,0 +1,59 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                { "type": "item", "name": "minecraft:leather_helmet", "weight": 5, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.3, "max": 0.9 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 1, "max": 10 }, "treasure": false }
+                ] },
+                { "type": "item", "name": "minecraft:leather_chestplate", "weight": 5, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.3, "max": 0.9 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 1, "max": 10 }, "treasure": false }
+                ] },
+                { "type": "item", "name": "minecraft:leather_leggings", "weight": 5, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.3, "max": 0.9 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 1, "max": 10 }, "treasure": false }
+                ] },
+                { "type": "item", "name": "minecraft:leather_boots", "weight": 5, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.3, "max": 0.9 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 1, "max": 10 }, "treasure": false }
+                ] },
+
+                { "type": "item", "name": "minecraft:chainmail_helmet", "weight": 4, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.2, "max": 0.8 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 5, "max": 15 }, "treasure": false }
+                ] },
+                { "type": "item", "name": "minecraft:chainmail_chestplate", "weight": 4, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.2, "max": 0.8 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 5, "max": 15 }, "treasure": false }
+                ] },
+                { "type": "item", "name": "minecraft:chainmail_leggings", "weight": 4, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.2, "max": 0.8 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 5, "max": 15 }, "treasure": false }
+                ] },
+                { "type": "item", "name": "minecraft:chainmail_boots", "weight": 4, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.2, "max": 0.8 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 5, "max": 15 }, "treasure": false }
+                ] },
+
+                { "type": "item", "name": "minecraft:iron_helmet", "weight": 4, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.1, "max": 0.7 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 5, "max": 20 }, "treasure": false }
+                ] },
+                { "type": "item", "name": "minecraft:iron_chestplate", "weight": 4, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.1, "max": 0.7 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 5, "max": 20 }, "treasure": false }
+                ] },
+                { "type": "item", "name": "minecraft:iron_leggings", "weight": 4, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.1, "max": 0.7 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 5, "max": 20 }, "treasure": false }
+                ] },
+                { "type": "item", "name": "minecraft:iron_boots", "weight": 4, "functions": [
+                    { "function": "set_damage", "damage": { "min": 0.1, "max": 0.7 } },
+                    { "function": "enchant_with_levels", "levels": { "min": 5, "max": 20 }, "treasure": false }
+                ] }
+            ]
+        }
+    ]
+}
