@@ -10,6 +10,8 @@
     "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "biomes": "#minecraft:is_forest",
+  "biomes": [
+  "minecraft:plains"
+  ],
   "use_expansion_hack": false
 }

@@ -72,14 +72,8 @@
                 },
                 {
                     "type": "item",
-                    "name": "create:blaze_burner",
-                    "weight": 2,
-                    "functions": [
-                        {
-                            "function": "set_nbt",
-                            "tag": "{HeldItem:{id:\"minecraft:air\",Count:1b}}"
-                        }
-                    ]
+                    "name": "create:empty_blaze_burner",
+                    "weight": 2
                 },
                 {
                     "type": "item",
