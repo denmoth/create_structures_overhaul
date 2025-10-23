@@ -1,7 +1,12 @@
 {
+    "type": "minecraft:chest",
     "pools": [
         {
-            "rolls": 3,
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+            },
             "entries": [
                 {
                     "type": "item",
@@ -11,8 +16,9 @@
                         {
                             "function": "set_count",
                             "count": {
+                                "type": "minecraft:uniform",
                                 "min": 1,
-                                "max": 3
+                                "max": 2
                             }
                         }
                     ]
@@ -25,6 +31,7 @@
                         {
                             "function": "set_count",
                             "count": {
+                                "type": "minecraft:uniform",
                                 "min": 1,
                                 "max": 2
                             }
@@ -43,12 +50,7 @@
                             "zoom": 2
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "rolls": 2,
-            "entries": [
+                },
                 {
                     "type": "item",
                     "name": "minecraft:iron_axe",
@@ -57,6 +59,7 @@
                         {
                             "function": "set_damage",
                             "damage": {
+                                "type": "minecraft:uniform",
                                 "min": 0.3,
                                 "max": 0.8
                             }
@@ -66,165 +69,14 @@
                 {
                     "type": "item",
                     "name": "minecraft:stone_axe",
-                    "weight": 6,
+                    "weight": 5,
                     "functions": [
                         {
                             "function": "set_damage",
                             "damage": {
+                                "type": "minecraft:uniform",
                                 "min": 0.2,
                                 "max": 0.9
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:iron_pickaxe",
-                    "weight": 2,
-                    "functions": [
-                        {
-                            "function": "set_damage",
-                            "damage": {
-                                "min": 0.3,
-                                "max": 0.8
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "rolls": 3,
-            "entries": [
-                {
-                    "type": "item",
-                    "name": "minecraft:oak_log",
-                    "weight": 10,
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "min": 3,
-                                "max": 8
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:spruce_log",
-                    "weight": 10,
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "min": 3,
-                                "max": 8
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:birch_log",
-                    "weight": 8,
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "min": 3,
-                                "max": 8
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "rolls": 2,
-            "entries": [
-                {
-                    "type": "item",
-                    "name": "minecraft:leather_boots",
-                    "weight": 3
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:leather_helmet",
-                    "weight": 3
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:leather_chestplate",
-                    "weight": 2
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:paper",
-                    "weight": 4,
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "min": 2,
-                                "max": 5
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:book",
-                    "weight": 3
-                }
-            ]
-        },
-        {
-            "rolls": 2,
-            "entries": [
-                {
-                    "type": "item",
-                    "name": "minecraft:torch",
-                    "weight": 6,
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "min": 4,
-                                "max": 12
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:lantern",
-                    "weight": 2,
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "min": 1,
-                                "max": 2
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "rolls": 1,
-            "entries": [
-                {
-                    "type": "item",
-                    "name": "minecraft:cobweb",
-                    "weight": 12,
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "min": 2,
-                                "max": 6
                             }
                         }
                     ]

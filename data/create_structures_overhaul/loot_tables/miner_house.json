@@ -1,42 +1,235 @@
 {
     "pools": [
         {
-            "rolls": 7,
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+            },
             "entries": [
-                { "type": "item", "name": "minecraft:coal", "weight": 10, "functions": [{ "function": "set_count", "count": { "min": 2, "max": 8 } }] },
-                { "type": "item", "name": "minecraft:iron_ingot", "weight": 7, "functions": [{ "function": "set_count", "count": { "min": 1, "max": 4 } }] },
-                { "type": "item", "name": "minecraft:gold_ingot", "weight": 4, "functions": [{ "function": "set_count", "count": { "min": 1, "max": 2 } }] },
-                { "type": "item", "name": "minecraft:redstone", "weight": 6, "functions": [{ "function": "set_count", "count": { "min": 2, "max": 6 } }] },
-                { "type": "item", "name": "minecraft:lapis_lazuli", "weight": 4, "functions": [{ "function": "set_count", "count": { "min": 1, "max": 5 } }] },
-                { "type": "item", "name": "minecraft:diamond", "weight": 1, "functions": [{ "function": "set_count", "count": 1 }] },
-                { "type": "item", "name": "minecraft:emerald", "weight": 1, "functions": [{ "function": "set_count", "count": 1 }] }
+                {
+                    "type": "item",
+                    "name": "minecraft:coal",
+                    "weight": 10,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_ingot",
+                    "weight": 7,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:gold_ingot",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:constant",
+                                "value": 1
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:redstone",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:lapis_lazuli",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:constant",
+                                "value": 1
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:emerald",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:constant",
+                                "value": 1
+                            }
+                        }
+                    ]
+                }
             ]
         },
         {
             "rolls": 3,
             "entries": [
-                { "type": "item", "name": "minecraft:iron_pickaxe", "weight": 3, "functions": [
-                    { "function": "set_damage", "damage": { "min": 0.3, "max": 0.8 } },
-                    { "function": "enchant_with_levels", "levels": { "min": 5, "max": 15 }, "treasure": false }
-                ] },
-                { "type": "item", "name": "minecraft:stone_pickaxe", "weight": 5, "functions": [
-                    { "function": "set_damage", "damage": { "min": 0.3, "max": 0.9 } },
-                    { "function": "enchant_with_levels", "levels": { "min": 1, "max": 8 }, "treasure": false }
-                ] },
-                { "type": "item", "name": "minecraft:iron_shovel", "weight": 2, "functions": [
-                    { "function": "set_damage", "damage": { "min": 0.3, "max": 0.8 } },
-                    { "function": "enchant_with_levels", "levels": { "min": 1, "max": 10 }, "treasure": false }
-                ] },
-                { "type": "item", "name": "minecraft:shield", "weight": 1, "functions": [
-                    { "function": "set_damage", "damage": { "min": 0.2, "max": 0.6 } },
-                    { "function": "enchant_with_levels", "levels": { "min": 5, "max": 10 }, "treasure": false }
-                ] }
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_pickaxe",
+                    "weight": 3,
+                    "functions": [
+                        {
+                            "function": "set_damage",
+                            "damage": {
+                                "type": "minecraft:uniform",
+                                "min": 0.3,
+                                "max": 0.8
+                            }
+                        },
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": {
+                                "type": "minecraft:uniform",
+                                "min": 5,
+                                "max": 15
+                            },
+                            "treasure": false
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:stone_pickaxe",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "set_damage",
+                            "damage": {
+                                "type": "minecraft:uniform",
+                                "min": 0.3,
+                                "max": 0.9
+                            }
+                        },
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 8
+                            },
+                            "treasure": false
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_shovel",
+                    "weight": 2,
+                    "functions": [
+                        {
+                            "function": "set_damage",
+                            "damage": {
+                                "type": "minecraft:uniform",
+                                "min": 0.3,
+                                "max": 0.8
+                            }
+                        },
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 10
+                            },
+                            "treasure": false
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:shield",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_damage",
+                            "damage": {
+                                "type": "minecraft:uniform",
+                                "min": 0.2,
+                                "max": 0.6
+                            }
+                        },
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": {
+                                "type": "minecraft:uniform",
+                                "min": 5,
+                                "max": 10
+                            },
+                            "treasure": false
+                        }
+                    ]
+                }
             ]
         },
         {
             "rolls": 2,
             "entries": [
-                { "type": "item", "name": "minecraft:cobweb", "weight": 10, "functions": [{ "function": "set_count", "count": { "min": 2, "max": 5 } }] }
+                {
+                    "type": "item",
+                    "name": "minecraft:cobweb",
+                    "weight": 10,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 2,
+                                "max": 5
+                            }
+                        }
+                    ]
+                }
             ]
         }
     ]
