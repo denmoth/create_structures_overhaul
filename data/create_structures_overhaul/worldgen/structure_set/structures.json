@@ -55,6 +55,26 @@
     {
       "structure": "create_structures_overhaul:filler",
       "weight": 8
+    },
+    {
+      "structure": "create_structures_overhaul:spooky_house1",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:spooky_house2",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:dark_spooky_house",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:graveyard",
+      "weight": 1
+    },
+    {
+      "structure": "create_structures_overhaul:spooky_farm",
+      "weight": 1
     }
   ],
   "placement": {
