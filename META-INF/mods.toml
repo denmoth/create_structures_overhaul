@@ -4,12 +4,12 @@ license="MIT License"
 
 [[mods]]
 modId="create_structures_overhaul"
-version="1.2.0"
+version="1.3.0"
 displayName="Create: Structures Overhaul"
 displayURL="https://legacy.curseforge.com/minecraft/mc-mods/create-structures-overrhaul"
 logoFile="logo.png"
 credits=""
-authors="Denmoth,timy228e"
+authors="Denmoth, timy228e"
 description="This mod adding some structures to create mod"
 displayTest="IGNORE_SERVER_VERSION"
 
