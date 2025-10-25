@@ -5,48 +5,68 @@
             "rolls": {
                 "type": "minecraft:uniform",
                 "min": 2,
-                "max": 4
+                "max": 5
             },
             "entries": [
                 {
-                    "type": "item",
+                    "type": "minecraft:item",
                     "name": "minecraft:glistering_melon_slice",
-                    "weight": 8,
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "type": "minecraft:uniform",
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:echo_shard",
-                    "weight": 5,
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "type": "minecraft:uniform",
-                                "min": 1,
-                                "max": 2
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:pumpkin_pie",
                     "weight": 6,
                     "functions": [
                         {
                             "function": "set_count",
                             "count": {
                                 "type": "minecraft:uniform",
+                                "min": 2,
+                                "max": 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:pumpkin_pie",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 2,
+                                "max": 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:echo_shard",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 3,
+                                "max": 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "create:precision_mechanism",
+                    "weight": 2
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "create:brass_sheet",
+                    "weight": 3,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
                                 "min": 1,
                                 "max": 2
                             }
@@ -54,9 +74,38 @@
                     ]
                 },
                 {
-                    "type": "item",
+                    "type": "minecraft:item",
+                    "name": "create:brass_hand",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 4
+            },
+            "entries": [
+                {
+                    "type": "minecraft:item",
                     "name": "minecraft:cobweb",
-                    "weight": 10,
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 2,
+                                "max": 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:bone",
+                    "weight": 6,
                     "functions": [
                         {
                             "function": "set_count",
@@ -69,53 +118,24 @@
                     ]
                 },
                 {
-                    "type": "item",
-                    "name": "minecraft:bone",
-                    "weight": 10,
+                    "type": "minecraft:item",
+                    "name": "minecraft:carved_pumpkin",
+                    "weight": 5,
                     "functions": [
                         {
                             "function": "set_count",
-                            "count": {
-                                "type": "minecraft:uniform",
-                                "min": 2,
-                                "max": 8
-                            }
+                            "count": 1
                         }
                     ]
                 },
                 {
-                    "type": "item",
+                    "type": "minecraft:item",
                     "name": "minecraft:music_disc_13",
                     "weight": 2
                 },
                 {
-                    "type": "item",
+                    "type": "minecraft:item",
                     "name": "minecraft:music_disc_cat",
-                    "weight": 2
-                },
-                {
-                    "type": "item",
-                    "name": "create:brass_sheet",
-                    "weight": 4,
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "type": "minecraft:uniform",
-                                "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "create:precision_mechanism",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "create:brass_hand",
                     "weight": 2
                 }
             ]
