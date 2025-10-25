@@ -12,10 +12,8 @@
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
   "biomes": [
     "dark_forest",
-    "giant_tree_taiga",
     "taiga",
     "savanna_plateau",
-    "wooded_hills",
     "plains",
     "snowy_taiga"
   ],

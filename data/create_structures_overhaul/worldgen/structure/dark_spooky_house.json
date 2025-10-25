@@ -13,8 +13,9 @@
   "biomes": [
     "dark_forest",
     "swamp",
-    "giant_tree_taiga",
-    "taiga"
+    "taiga",
+    "snowy_taiga",
+    "mushroom_fields"
   ],
   "use_expansion_hack": false
 }
