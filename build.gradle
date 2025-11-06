@@ -1,0 +1,91 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '5.1.+'
+}
+
+group = 'denmoth.createstructures'
+version = '1.4.0'
+archivesBaseName = 'create_structures_overhaul'
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            args '--username', 'DevPlayer'
+            mods {
+                create_structures_overhaul {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run_server')
+            args '--nogui'
+            mods {
+                create_structures_overhaul {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+// ---------------- MAVEN ----------------
+repositories {
+    maven { url = "https://maven.minecraftforge.net" }
+    mavenCentral()
+}
+
+// ---------------- DEPENDENCIES ----------------
+dependencies {
+    minecraft "net.minecraftforge:forge:1.20.1-47.2.20"
+    // никаких dev-зависимостей — Create будет лежать в run/mods
+}
+
+// ---------------- jarJar ----------------
+jarJar.enable()
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Jar).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes([
+            'Specification-Title'   : 'Create Structures Overhaul',
+            'Specification-Vendor'  : 'Denmoth',
+            'Specification-Version' : version,
+            'Implementation-Title'  : archivesBaseName,
+            'Implementation-Version': version,
+            'Implementation-Vendor' : 'Denmoth'
+        ])
+    }
+}
+
+// --------- автокопирование в run/mods ----------
+tasks.register('copyToRunMods', Copy) {
+    dependsOn jar
+    from("$buildDir/libs/${archivesBaseName}-${version}.jar")
+    into("$projectDir/run/mods")
+}
+
+afterEvaluate {
+    tasks.findByName("runClient")?.configure {
+        dependsOn tasks.named("copyToRunMods")
+    }
+}
+
+// Комбинированная команда
+tasks.register('devrun') {
+    group = "development"
+    description = "Builds mod, copies to run/mods and runs client."
+    dependsOn 'build', 'copyToRunMods', 'runClient'
+}
