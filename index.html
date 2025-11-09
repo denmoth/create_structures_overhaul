@@ -29,6 +29,7 @@
   </select>
 
   <script>
+    const base = '/create_structures_overhaul/docs/';
     const userLang = (navigator.language || navigator.userLanguage).toLowerCase();
     const savedLang = localStorage.getItem('lang');
     let lang = savedLang || (userLang.startsWith('ru') ? 'ru' :
@@ -45,6 +46,7 @@
       location.reload();
     }
     window.$docsify = {
+      basePath: base,
       name: 'Create: Structures Overhaul',
       repo: 'https://github.com/Denmoth/create_structures_overhaul',
       loadSidebar: true,
