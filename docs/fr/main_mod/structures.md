@@ -1,6 +1,6 @@
 # Main Mod Structures
 
-This section covers structures from the main **Create: Structures Overhaul** mod.
+Covers structures from the main Create: Structures Overhaul mod.
 
 ## Example Structures
 - Windmills (Plains, Meadow)

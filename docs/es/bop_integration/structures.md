@@ -1,6 +1,6 @@
 # Biomes O’ Plenty Integration
 
-Covers structures that appear when **Biomes O’ Plenty** is installed.
+Structures appearing with Biomes O’ Plenty.
 
 ## Example Structures
 - Jungle Workshop (Rainforest)

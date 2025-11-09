@@ -1,4 +1,4 @@
-# Create: Structures Overhaul — Wiki (EN)
+# Create: Structures Overhaul Wiki (ES)
 
 Welcome to the official documentation for **Create: Structures Overhaul**.
 
