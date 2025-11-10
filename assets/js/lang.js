@@ -1,38 +1,10 @@
 
-const langs = {
-  en: "English", ru: "Русский", ua: "Українська", de: "Deutsch", fr: "Français"
-};
-const langSel = document.getElementById('language-selector');
-for (const [code, name] of Object.entries(langs)) {
-  const opt = document.createElement('option');
-  opt.value = code; opt.textContent = name;
-  langSel.appendChild(opt);
-}
-let userLang = localStorage.getItem('lang') || navigator.language.slice(0,2);
-if (!langs[userLang]) userLang = 'en';
-langSel.value = userLang;
-async function loadLang(l) {
-  const res = await fetch(`assets/lang/${l}.json`);
-  const data = await res.json();
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n.split('.').reduce((o,i)=>o?o[i]:null,data);
-    if (key) el.textContent = key;
-  });
-}
-langSel.addEventListener('change', e=>{
-  localStorage.setItem('lang', e.target.value);
-  loadLang(e.target.value);
-});
-loadLang(userLang);
-// theme toggle
-const toggleBtn = document.getElementById('theme-toggle');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const theme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
-document.body.classList.toggle('dark', theme === 'dark');
-toggleBtn.textContent = theme === 'dark' ? '🌙' : '🌞';
-toggleBtn.onclick = ()=>{
-  const dark = !document.body.classList.contains('dark');
-  document.body.classList.toggle('dark', dark);
-  localStorage.setItem('theme', dark ? 'dark' : 'light');
-  toggleBtn.textContent = dark ? '🌙' : '🌞';
-};
+const SUPPORTED=['ua','en','ru','de','fr','es'];const DEFAULT='en';
+function detectLang(){const s=localStorage.getItem('cso_lang');if(s&&SUPPORTED.includes(s))return s;const n=(navigator.language||'en').split('-')[0].toLowerCase();const l=SUPPORTED.includes(n)?n:DEFAULT;localStorage.setItem('cso_lang',l);return l;}
+async function fetchJson(u){try{const r=await fetch(u);if(r.ok)return await r.json()}catch(e){}return null;}
+async function loadDict(l){const tries=[`assets/lang/${l}.json`,`../assets/lang/${l}.json`];for(const t of tries){const d=await fetchJson(t);if(d)return d;}return{};}
+function i18nFill(d){for(const el of document.querySelectorAll('[data-i18n]')){const k=el.getAttribute('data-i18n');const v=k.split('.').reduce((o,x)=>(o||0)[x],d);if(typeof v==='string')el.innerHTML=v;}}
+function bindLangSelector(cur){const sel=document.getElementById('langSelect');if(!sel)return;const names={ua:'Українська',en:'English',ru:'Русский',de:'Deutsch',fr:'Français',es:'Español'};for(const c of SUPPORTED){const o=document.createElement('option');o.value=c;o.textContent=names[c];sel.appendChild(o);}sel.value=cur;sel.addEventListener('change',()=>{localStorage.setItem('cso_lang',sel.value);location.reload();});}
+function setupTheme(){const root=document.documentElement;const btn=document.getElementById('themeToggle');const saved=localStorage.getItem('cso_theme');const prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;const start=saved||(prefersDark?'dark':'light');root.classList.toggle('light',start==='light');btn.textContent=start==='light'?'Dark':'Light';btn.addEventListener('click',()=>{const isLight=root.classList.toggle('light');localStorage.setItem('cso_theme',isLight?'light':'dark');btn.textContent=isLight?'Dark':'Light';});}
+function highlightActive(){const here=location.pathname.split('/').pop()||'index.html';for(const a of document.querySelectorAll('.navlist a')){const href=a.getAttribute('href');if(href&&href.endsWith(here))a.classList.add('active');}}
+document.addEventListener('DOMContentLoaded',async()=>{setupTheme();highlightActive();const lang=detectLang();bindLangSelector(lang);const dict=await loadDict(lang);i18nFill(dict);});

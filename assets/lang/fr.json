@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "installation": "Installation",
+    "structures": "Structures",
+    "addons": "Extensions et intégrations",
+    "changelog": "Journal des modifications",
+    "credits": "Crédits",
+    "faq": "FAQ",
+    "about": "À propos"
+  },
+  "home": {
+    "badge": "Wiki officiel",
+    "title": "Create: Structures Overhaul Wiki",
+    "lead": "Bienvenue dans la documentation officielle de Create: Structures Overhaul.",
+    "sections": "Sections principales",
+    "s": {
+      "installation": "Guide d'installation",
+      "structures": "Catalogue des structures",
+      "addons": "Extensions & compatibilité",
+      "about": "À propos et liens"
+    }
+  },
+  "sidebar": {
+    "quick": "Liens rapides"
+  },
+  "footer": {
+    "text": "© 2025 Denmoth — Conçu pour Create: Structures Overhaul"
+  }
+}

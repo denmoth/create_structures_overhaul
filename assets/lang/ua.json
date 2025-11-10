@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "home": "Головна",
+    "installation": "Встановлення",
+    "structures": "Структури",
+    "addons": "Аддони та інтеграції",
+    "changelog": "Зміни",
+    "credits": "Автори",
+    "faq": "Питання та відповіді",
+    "about": "Про проєкт"
+  },
+  "home": {
+    "badge": "Офіційна вікі",
+    "title": "Create: Structures Overhaul Wiki",
+    "lead": "Ласкаво просимо до офіційної документації Create: Structures Overhaul.",
+    "sections": "Основні розділи",
+    "s": {
+      "installation": "Посібник з встановлення",
+      "structures": "Каталог структур",
+      "addons": "Аддони та сумісність",
+      "about": "Про проєкт і посилання"
+    }
+  },
+  "sidebar": {
+    "quick": "Швидкі посилання"
+  },
+  "footer": {
+    "text": "© 2025 Denmoth — Створено для Create: Structures Overhaul"
+  }
+}

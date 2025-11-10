@@ -1,47 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Structures - Create: Structures Overhaul Wiki</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <script src="../assets/js/lang.js" defer></script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Create: Structures Overhaul Wiki</title>
+  <link rel="icon" href="../assets/images/logo.png"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
 </head>
 <body>
-  <header>
-    <div class="logo-title">
-      <img src="../assets/images/logo.png" alt="logo" class="logo">
-      <h1>Create: Structures Overhaul Wiki</h1>
+  
+  <header class="header">
+    <div class="header-inner">
+      <img class="logo" src="../assets/images/logo.png" alt="logo"/>
+      <div class="title">Create: Structures Overhaul Wiki</div>
+      <div class="spacer"></div>
+      <select id="langSelect"></select>
+      <button id="themeToggle" class="theme">Dark</button>
     </div>
-    <div class="controls">
-      <select id="language-selector"></select>
-      <button id="theme-toggle" title="Toggle theme">🌙</button>
+    <div class="layout" style="padding-top:0;grid-template-columns:1fr;">
+      <ul class="navlist" style="flex-direction:row;gap:10px;overflow:auto;">
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../pages/installation.html" data-i18n="nav.installation">Installation</a></li>
+        <li><a href="../pages/structures.html" data-i18n="nav.structures">Structures</a></li>
+        <li><a href="../pages/addons.html" data-i18n="nav.addons">Addons & Integrations</a></li>
+        <li><a href="../pages/changelog.html" data-i18n="nav.changelog">Changelog</a></li>
+        <li><a href="../pages/faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="../pages/credits.html" data-i18n="nav.credits">Credits</a></li>
+        <li><a href="../pages/about.html" data-i18n="nav.about">About</a></li>
+      </ul>
     </div>
   </header>
-  <nav id="sidebar">
-    <ul>
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="installation.html">Installation</a></li>
-      <li><a href="structures.html">Structures</a></li>
-      <li><a href="addons.html">Addons & Integration</a></li>
-      <li><a href="changelog.html">Changelog</a></li>
-      <li><a href="credits.html">Credits</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
-  <main id="content">
-    <h2>Structures</h2>
-    <p>This page is under construction. Content for <strong>Structures</strong> will appear here soon.</p>
+
+  <main class="layout">
+    
+  <aside class="sidebar">
+    <div class="card">
+      <h3 data-i18n="sidebar.quick">Quick links</h3>
+      <ul class="navlist">
+        <li><a href="../pages/installation.html" data-i18n="nav.installation">Installation</a></li>
+        <li><a href="../pages/structures.html" data-i18n="nav.structures">Structures</a></li>
+        <li><a href="../pages/addons.html" data-i18n="nav.addons">Addons & Integrations</a></li>
+        <li><a href="https://github.com/Denmoth/create_structures_overhaul" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+  </aside>
+
+    <section class="content">
+      <div class="card">
+        <span class="badge" data-i18n="home.badge">Official Wiki</span>
+        <h1>Structures</h1>
+        <p>This page is a placeholder for structures catalog.</p>
+      </div>
+    </section>
   </main>
-  <footer>
-    <div class="footer-links">
-      <a href="https://github.com/Denmoth/create_structures_overhaul" target="_blank">GitHub</a> |
-      <a href="https://modrinth.com/mod/create-structures-overhaul" target="_blank">Modrinth</a> |
-      <a href="https://www.curseforge.com/minecraft/mc-mods/create-structures-overhaul" target="_blank">CurseForge</a> |
+  
+  <footer class="footer">
+    <div class="links">
+      <a href="https://github.com/Denmoth/create_structures_overhaul" target="_blank">GitHub</a>
+      <a href="https://modrinth.com/mod/create-structures-overhaul" target="_blank">Modrinth</a>
+      <a href="https://www.curseforge.com/minecraft/mc-mods/create-structures-overhaul" target="_blank">CurseForge</a>
       <a href="https://discord.gg/BCXqNfPnSh" target="_blank">Discord</a>
     </div>
-    <p>© 2025 Denmoth | Built with ♥ for Create: Structures Overhaul</p>
+    <div data-i18n="footer.text">© 2025 Denmoth — Built for Create: Structures Overhaul</div>
+    <script src="../assets/js/lang.js"></script>
   </footer>
+
 </body>
 </html>

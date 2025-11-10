@@ -3,14 +3,28 @@
     "home": "Home",
     "installation": "Installation",
     "structures": "Structures",
-    "addons": "Addons & Integration",
+    "addons": "Addons & Integrations",
     "changelog": "Changelog",
     "credits": "Credits",
     "faq": "FAQ",
     "about": "About"
   },
   "home": {
-    "welcome": "Welcome to Create: Structures Overhaul Wiki!",
-    "description": "Explore documentation, addons, and integration details for the mod."
+    "badge": "Official Wiki",
+    "title": "Create: Structures Overhaul Wiki",
+    "lead": "Welcome to the official documentation for Create: Structures Overhaul.",
+    "sections": "Main sections",
+    "s": {
+      "installation": "Installation guide",
+      "structures": "Structures catalog",
+      "addons": "Addons & compatibility",
+      "about": "About and links"
+    }
+  },
+  "sidebar": {
+    "quick": "Quick links"
+  },
+  "footer": {
+    "text": "© 2025 Denmoth — Built for Create: Structures Overhaul"
   }
 }
