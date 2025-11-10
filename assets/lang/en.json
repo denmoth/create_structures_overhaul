@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "installation": "Installation",
+    "structures": "Structures",
+    "addons": "Addons & Integration",
+    "changelog": "Changelog",
+    "credits": "Credits",
+    "faq": "FAQ",
+    "about": "About"
+  },
+  "home": {
+    "welcome": "Welcome to Create: Structures Overhaul Wiki!",
+    "description": "Explore documentation, addons, and integration details for the mod."
+  }
+}
