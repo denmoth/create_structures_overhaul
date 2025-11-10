@@ -10,15 +10,13 @@
     "about": "Про проєкт"
   },
   "home": {
+    "title": "Create: Structures Overhaul — Вікі",
     "badge": "Офіційна вікі",
-    "title": "Create: Structures Overhaul Wiki",
     "lead": "Ласкаво просимо до офіційної документації Create: Structures Overhaul.",
     "sections": "Основні розділи",
-    "s": {
-      "installation": "Посібник з встановлення",
-      "structures": "Каталог структур",
-      "addons": "Аддони та сумісність",
-      "about": "Про проєкт і посилання"
+    "cta": {
+      "get_started": "Почати",
+      "github": "GitHub"
     }
   },
   "sidebar": {

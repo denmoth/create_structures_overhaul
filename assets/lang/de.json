@@ -10,15 +10,13 @@
     "about": "Über"
   },
   "home": {
+    "title": "Create: Structures Overhaul — Wiki",
     "badge": "Offizielles Wiki",
-    "title": "Create: Structures Overhaul Wiki",
     "lead": "Willkommen in der offiziellen Dokumentation zu Create: Structures Overhaul.",
     "sections": "Hauptbereiche",
-    "s": {
-      "installation": "Installationsanleitung",
-      "structures": "Strukturkatalog",
-      "addons": "Add-ons & Kompatibilität",
-      "about": "Über & Links"
+    "cta": {
+      "get_started": "Loslegen",
+      "github": "GitHub öffnen"
     }
   },
   "sidebar": {
