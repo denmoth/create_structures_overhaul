@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="../">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="faq_title">FAQ</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><path fill='%2315b8a6' d='M12 2l3 7h7l-5.6 4.1L17.7 21 12 16.9 6.3 21l1.3-7.9L2 9h7z'/></svg>">
+</head>
+<body class="light">
+  <div class="wrapper">
+    <header>
+      <div class="header-top">
+        <div class="brand">
+          <span class="brand-text" data-i18n="site_title">Create: Structures Overhaul — Wiki</span>
+        </div>
+        <div class="search-container">
+          <input type="text" id="search-input" data-i18n-placeholder="search_placeholder" placeholder="Search documentation…" autocomplete="off">
+          <div class="search-results"></div>
+        </div>
+        <div class="controls">
+          <select id="language-select">
+            <option value="en">🇬🇧 English</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="ua">🇺🇦 Українська</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="es">🇪🇸 Español</option>
+          </select>
+          <button id="theme-toggle" aria-label="Toggle dark/light theme">
+            <svg class="icon sun" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="icon moon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="pages/installation.html" data-i18n="nav_installation">Installation</a></li>
+          <li><a href="pages/structures.html" data-i18n="nav_structures">Structures</a></li>
+          <li><a href="pages/addons.html" data-i18n="nav_addons">Addons & Integrations</a></li>
+          <li><a href="pages/changelog.html" data-i18n="nav_changelog">Changelog</a></li>
+          <li><a href="pages/faq.html" data-i18n="nav_faq">FAQ</a></li>
+          <li><a href="pages/credits.html" data-i18n="nav_credits">Credits</a></li>
+          <li><a href="pages/about.html" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <aside id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="pages/installation.html" data-i18n="nav_installation">Installation</a></li>
+          <li><a href="pages/structures.html" data-i18n="nav_structures">Structures</a></li>
+          <li><a href="pages/addons.html" data-i18n="nav_addons">Addons & Integrations</a></li>
+          <li><a href="pages/changelog.html" data-i18n="nav_changelog">Changelog</a></li>
+          <li><a href="pages/faq.html" data-i18n="nav_faq">FAQ</a></li>
+          <li><a href="pages/credits.html" data-i18n="nav_credits">Credits</a></li>
+          <li><a href="pages/about.html" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main id="content">
+      <section class="page-hero">
+        <span class="badge" data-i18n="faq_title">FAQ</span>
+        <h1 data-i18n="faq_title">Frequently Asked Questions</h1>
+        <p data-i18n="faq_desc">Common questions and answers.</p>
+      </section>
+
+      <section class="page-section">
+        <article>
+          <div class="content-card">
+            <h3 data-i18n="faq_q1">How do I install the mod?</h3>
+            <p data-i18n="faq_a1">Download the mod jar, install Create, and place the jar into your /mods folder.</p>
+          </div>
+          <div class="content-card">
+            <h3 data-i18n="faq_q2">Does it work with Biomes O’ Plenty?</h3>
+            <p data-i18n="faq_a2">Yes, install the BOP Integration addon to add structures in BOP biomes.</p>
+          </div>
+          <div class="content-card">
+            <h3 data-i18n="faq_q3">Is it compatible with modpacks?</h3>
+            <p data-i18n="faq_a3">It should work with most modpacks built on Forge/NeoForge; check for version compatibility.</p>
+          </div>
+          <div class="content-card">
+            <h3>How can I report a structure bug?</h3>
+            <p>Reproduce the issue in a new world, then open a GitHub issue with coordinates, mod list, and the structure's <code>structure_set</code> name. Screenshots help us pinpoint palette errors.</p>
+          </div>
+          <div class="content-card">
+            <h3>Can I disable specific structures?</h3>
+            <p>Yes. Toggle families inside <code>config/create-structures-overhaul.toml</code> or copy the relevant <code>structure_set</code> JSON into a datapack and remove entries you don't want.</p>
+          </div>
+          <div class="callout info">Need real-time help? Join the Discord <em>#support</em> channel and include logs plus mod versions.</div>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <p data-i18n="footer_text">© 2025 Denmoth & Timy228e</p>
+      <p>
+        <a href="https://github.com/Denmoth/create_structures_overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_github">GitHub</a> •
+        <a href="https://modrinth.com/mod/create-structures-overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_modrinth">Modrinth</a> •
+        <a href="https://www.curseforge.com/minecraft/mc-mods/create-structures-overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_curseforge">CurseForge</a> •
+        <a href="https://discord.gg/BCXqNfPnSh" target="_blank" rel="noopener noreferrer" data-i18n="link_discord">Discord</a>
+      </p>
+    </footer>
+  </div>
+  <script src="assets/js/scripts.js"></script>
+</body>
+</html>
