@@ -1,42 +1,405 @@
+/* Core Styles for Create: Structures Overhaul Wiki (v5)
+   This stylesheet defines the look and feel of the documentation site.  It uses CSS
+   variables to support light and dark themes and provides a flexible layout with
+   a collapsible sidebar navigation, top header and content area.  Transitions
+   and subtle animations are used to make theme switches and hover states feel
+   smooth without being distracting. */
 
-:root{--bg:#0f1117;--card:#151922;--text:#e5e7eb;--muted:#a3acb9;--brand:#14b8a6;--brand-2:#06b6d4;--border:#23283a}
-:root.light{--bg:#fff;--card:#fff;--text:#111827;--muted:#4b5563;--brand:#0ea5e9;--brand-2:#14b8a6;--border:#e5e7eb}
-*{box-sizing:border-box}html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;transition:background .4s,color .4s,filter .3s,opacity .3s}
-body.theme-fade{filter:brightness(.96);opacity:.96}
-a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
-.header{position:sticky;top:0;z-index:50;background:rgba(15,17,23,.7);backdrop-filter:blur(10px) saturate(140%);border-bottom:1px solid var(--border);transition:background .3s}
-:root.light .header{background:rgba(255,255,255,.85)}
-.header-inner{max-width:1200px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:14px}
-.logo{width:28px;height:28px;border-radius:8px;background:#0b0e14}
-.title{font-weight:700;letter-spacing:.2px}.spacer{flex:1}
-.controls{display:flex;gap:10px;align-items:center}
-.select{display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--text)}
-.select select{background:transparent;border:none;color:var(--text);font:inherit;outline:none}
-.flag{font-size:16px;line-height:1}
-.theme-btn{display:flex;align-items:center;justify-content:center;width:40px;height:36px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer;position:relative;overflow:hidden}
-.theme-icon{position:absolute;transition:transform .45s,opacity .35s}
-.theme-icon.sun{transform:translateY(0) rotate(0deg)}
-.theme-icon.sun.leave{transform:translateY(18px) rotate(120deg);opacity:0}
-.theme-icon.moon{transform:translateY(-18px);opacity:0}
-.theme-icon.moon.enter{transform:translateY(0);opacity:1}
-.navbar{border-top:1px solid var(--border)}
-.navwrap{max-width:1200px;margin:0 auto;padding:10px 18px}
-.navlist{list-style:none;display:flex;gap:10px;padding:0;margin:0;overflow:auto}
-.navlist a{display:block;padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:#0f131a;transition:transform .15s,box-shadow .15s}
-:root.light .navlist a{background:#f6f7f9}
-.navlist a:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.15)}
-.navlist a.active{outline:2px solid var(--brand)}
-.page{min-height:calc(100vh - 180px);display:flex;gap:18px;max-width:1200px;margin:0 auto;padding:18px}
-@media (max-width:900px){.page{flex-direction:column}}
-.sidebar{flex:0 0 260px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
-.content{flex:1}
-.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#0f131a;border:1px solid var(--border);font-size:12px}
-:root.light .badge{background:#f6f7f9}
-.hero{display:grid;gap:10px}
-.hero .buttons{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
-.btn.outline{background:transparent;color:var(--text)}
-.footer{max-width:1200px;margin:28px auto 0;padding:18px;color:var(--muted);border-top:1px solid var(--border);display:grid;gap:8px;justify-items:center}
-.footer .links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+/* Use a simple modern font stack */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Noto Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Theme variables */
+:root {
+  /* Light theme defaults */
+  --bg-color: #f9fafb;
+  --bg-color-alt: #f1f5f9;
+  --card-color: #ffffff;
+  --text-color: #1f2937;
+  --accent-color: #06b6d4;
+  --accent-hover: #0891b2;
+  --card-border: #e5e7eb;
+}
+
+body.dark {
+  --bg-color: #111317;
+  --bg-color-alt: #161b23;
+  --card-color: #1a1d25;
+  --text-color: #e5e7eb;
+  --accent-color: #15b8a6;
+  --accent-hover: #11958b;
+  --card-border: #2c3342;
+}
+
+/* General layout */
+/* Layout container wraps header, nav, content and footer. */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 1rem;
+  background-color: var(--card-color);
+  border-bottom: 1px solid var(--card-border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Top row inside header holds branding, search and control elements */
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Navigation bar sits below top row and holds horizontal links */
+.top-nav {
+  width: 100%;
+  margin-top: 0.4rem;
+}
+.top-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.top-nav ul li a {
+  display: block;
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+.top-nav ul li a:hover {
+  background-color: var(--bg-color-alt);
+  color: var(--accent-color);
+}
+.top-nav ul li a.active {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.brand-text {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Controls: language select and theme toggle */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Language selector styled to look minimal */
+.controls select {
+  appearance: none;
+  padding: 0.35rem 1.2rem 0.35rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-color);
+  color: var(--text-color);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23000000"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 12px;
+  min-width: 120px;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.controls select:hover {
+  border-color: var(--accent-color);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--card-color);
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+#theme-toggle .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 1;
+}
+
+body.light #theme-toggle .sun {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+body.light #theme-toggle .moon {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+body.dark #theme-toggle .sun {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+body.dark #theme-toggle .moon {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* Search bar */
+.search-container {
+  flex: 1;
+  max-width: 450px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-container input[type="text"] {
+  width: 100%;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  background-color: var(--bg-color-alt);
+  color: var(--text-color);
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: var(--accent-color);
+  background-color: var(--card-color);
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: var(--card-color);
+  border: 1px solid var(--card-border);
+  border-radius: 0 0 6px 6px;
+  max-height: 250px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  display: none;
+  z-index: 200;
+}
+
+.search-results.active {
+  display: block;
+}
+
+.search-results ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-results li {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--card-border);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.search-results li:last-child {
+  border-bottom: none;
+}
+
+.search-results li:hover {
+  background-color: var(--bg-color-alt);
+  color: var(--accent-color);
+}
+
+/* Sidebar */
+/* Remove sidebar styles: navigation will be horizontal */
+aside#sidebar {
+  display: none;
+}
+
+/* Main content area */
+main#content {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  /* account for header and footer height, approximate 120px */
+  min-height: calc(100vh - 140px);
+}
+
+/* Headings */
+h1, h2, h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Feature cards */
+.feature-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.feature-card {
+  flex: 1 1 250px;
+  background-color: var(--card-color);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 1rem;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.feature-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Links section */
+.link-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.link-buttons a {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.95rem;
+  background-color: var(--card-color);
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.link-buttons a:hover {
+  background-color: var(--bg-color-alt);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+table th, table td {
+  border: 1px solid var(--card-border);
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+table th {
+  background-color: var(--bg-color-alt);
+  font-weight: 600;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: var(--bg-color-alt);
+}
+
+/* Footer */
+footer {
+  padding: 1rem;
+  background-color: var(--card-color);
+  border-top: 1px solid var(--card-border);
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* Responsive layout: collapse sidebar on small screens */
+@media (max-width: 1024px) {
+  aside#sidebar {
+    position: fixed;
+    top: 56px;
+    left: -240px;
+    height: calc(100vh - 56px);
+    width: 240px;
+    transition: left 0.3s ease;
+  }
+  aside#sidebar.open {
+    left: 0;
+  }
+  main#content {
+    padding-left: 0;
+  }
+  .sidebar-toggle {
+    display: inline-block;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  header .brand-text {
+    font-size: 1rem;
+  }
+}
