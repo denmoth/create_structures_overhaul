@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Create: Structures Overhaul Wiki"
+  },
+  "sidebar": {
+    "quick_links": "Быстрые ссылки",
+    "installation": "Установка",
+    "structures": "Структуры",
+    "addons": "Аддоны и совместимость",
+    "about": "О проекте"
+  },
+  "home": {
+    "badge": "Официальная вики",
+    "title": "Create: Structures Overhaul Wiki",
+    "notice": "Сайт автоматически определяет язык. В любой момент можно сменить его в шапке.",
+    "lead": "Добро пожаловать в официальную документацию Create: Structures Overhaul. Используй боковое меню для навигации.",
+    "sections": "Основные разделы",
+    "s": {
+      "installation": "Установка",
+      "structures": "Каталог структур",
+      "addons": "Аддоны и совместимость",
+      "about": "О проекте и ссылки"
+    }
+  },
+  "installation": {
+    "title": "Установка",
+    "steps": {
+      "1": "Установи Forge/NeoForge 1.20.1.",
+      "2": "Установи Create.",
+      "3": "Скачай CSO и положи .jar в папку /mods.",
+      "4": "Опционально: Biomes O' Plenty и аддон CSO BOP Integration."
+    },
+    "notice": "Совместимость версий смотри в разделе «Аддоны»."
+  },
+  "structures": {
+    "title": "Структуры",
+    "lead": "Каталог структур с биомами и лут-таблицами.",
+    "items": {
+      "windmill": "Ветряная мельница",
+      "windmill_biomes": "Равнины, Луга",
+      "factory": "Фабрика",
+      "factory_biomes": "Индустриальные/Городские",
+      "ruins": "Руины",
+      "ruins_biomes": "Лес, Тайга"
+    }
+  },
+  "addons": {
+    "title": "Аддоны и совместимость",
+    "supported": "Поддержка",
+    "notes": "Примечание",
+    "rows": {
+      "create": "Требуется",
+      "bop": "Добавляет структуры по биомам",
+      "cso_bop": "Расширяет генерацию мира"
+    }
+  },
+  "about": {
+    "title": "О проекте",
+    "text": "Create: Structures Overhaul — аддон с тщательно подобранными структурами для мода Create."
+  },
+  "footer": {
+    "text": "© 2025 Denmoth — Create: Structures Overhaul."
+  }
+}
