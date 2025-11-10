@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="./">
   <title data-i18n="site_title">Create: Structures Overhaul — Wiki</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><path fill='%2315b8a6' d='M12 2l3 7h7l-5.6 4.1L17.7 21 12 16.9 6.3 21l1.3-7.9L2 9h7z'/></svg>">
@@ -50,7 +51,7 @@
       <!-- Top navigation bar -->
       <nav class="top-nav">
         <ul>
-          <li><a href="/" data-i18n="nav_home">Home</a></li>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
           <li><a href="pages/installation.html" data-i18n="nav_installation">Installation</a></li>
           <li><a href="pages/structures.html" data-i18n="nav_structures">Structures</a></li>
           <li><a href="pages/addons.html" data-i18n="nav_addons">Addons & Integrations</a></li>
@@ -64,7 +65,7 @@
     <aside id="sidebar">
       <nav>
         <ul>
-          <li><a href="/" data-i18n="nav_home">Home</a></li>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
           <li><a href="pages/installation.html" data-i18n="nav_installation">Installation</a></li>
           <li><a href="pages/structures.html" data-i18n="nav_structures">Structures</a></li>
           <li><a href="pages/addons.html" data-i18n="nav_addons">Addons & Integrations</a></li>
@@ -76,35 +77,131 @@
       </nav>
     <main id="content">
       <!-- Hero Section -->
-      <section class="hero">
+      <section class="hero" id="overview">
+        <div class="hero-badge" data-i18n="hero_badge">World Generation Add-on for Create</div>
         <h1 data-i18n="hero_title">Create: Structures Overhaul — Wiki</h1>
         <p data-i18n="hero_subtitle">Expand Create with stunning world structures.</p>
-        <div class="link-buttons">
+        <div class="hero-actions">
           <a href="pages/installation.html" class="btn" data-i18n="hero_get_started">Get Started</a>
-          <a href="https://github.com/Denmoth/create_structures_overhaul" class="btn" target="_blank" rel="noopener noreferrer" data-i18n="hero_github">GitHub</a>
+          <a href="pages/structures.html" class="btn secondary" data-i18n="hero_view_structures">Browse Structures</a>
           <a href="https://www.curseforge.com/minecraft/mc-mods/create-structures-overhaul" class="btn" target="_blank" rel="noopener noreferrer" data-i18n="hero_download">Download Mod</a>
         </div>
-      </section>
-      <!-- Features Overview -->
-      <section class="features">
-        <h2 data-i18n="features_title">Features Overview</h2>
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3 data-i18n="feature_dynamic_title">Dynamic Generation</h3>
-            <p data-i18n="feature_dynamic_desc">Structures appear seamlessly in world generation.</p>
-          </div>
-          <div class="feature-card">
-            <h3 data-i18n="feature_biome_title">Biome Integration</h3>
-            <p data-i18n="feature_biome_desc">Adapted to different environments and biomes.</p>
-          </div>
-          <div class="feature-card">
-            <h3 data-i18n="feature_addon_title">Addon Support</h3>
-            <p data-i18n="feature_addon_desc">Extensible and modular design with addons.</p>
-          </div>
+        <div class="hero-meta">
+          <span data-i18n="hero_version">Latest release: 1.5.0 • Minecraft 1.20.1</span>
+          <span data-i18n="hero_license">Open Source • MIT License</span>
         </div>
       </section>
-      <!-- Links Section -->
-      <section class="links">
+
+      <section class="section" id="quickstart">
+        <div class="section-header">
+          <h2 data-i18n="quickstart_title">Quick start</h2>
+          <p data-i18n="quickstart_subtitle">A fast overview for players and pack makers who want to jump right into the add-on.</p>
+        </div>
+        <div class="quickstart-grid">
+          <article class="quickstart-card">
+            <h3 data-i18n="quickstart_step_install_title">Install the dependencies</h3>
+            <p data-i18n="quickstart_step_install_desc">Grab Create, Flywheel and Kotlin for Forge/NeoForge, then drop the Structures Overhaul jar into <code>/mods</code>.</p>
+            <a class="text-link" href="pages/installation.html" data-i18n="quickstart_step_install_link">Open installation guide</a>
+          </article>
+          <article class="quickstart-card">
+            <h3 data-i18n="quickstart_step_config_title">Tune world generation</h3>
+            <p data-i18n="quickstart_step_config_desc">Use the supplied datapacks or tweak the JSON config to control spawn weights, biome tags and loot tables.</p>
+            <a class="text-link" href="pages/structures.html#configuration" data-i18n="quickstart_step_config_link">See configuration options</a>
+          </article>
+          <article class="quickstart-card">
+            <h3 data-i18n="quickstart_step_explore_title">Explore and expand</h3>
+            <p data-i18n="quickstart_step_explore_desc">Discover hand-crafted facilities across the overworld, then extend them with community-made structure packs.</p>
+            <a class="text-link" href="pages/addons.html" data-i18n="quickstart_step_explore_link">Discover addons</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="spotlights">
+        <div class="section-header">
+          <h2 data-i18n="spotlight_title">Structure spotlights</h2>
+          <p data-i18n="spotlight_subtitle">Signature builds that showcase how Create automation meets exploration.</p>
+        </div>
+        <div class="structure-grid">
+          <article class="structure-card">
+            <h3 data-i18n="spotlight_skyport_title">Skyport Docks</h3>
+            <p data-i18n="spotlight_skyport_desc">Floating gantries loaded with mechanical arms, perfect for introducing players to deployers and rope pulleys.</p>
+            <ul>
+              <li data-i18n="spotlight_skyport_feature1">Appears above temperate oceans between Y120–Y150.</li>
+              <li data-i18n="spotlight_skyport_feature2">Loot includes early Create components and kinetic templates.</li>
+            </ul>
+          </article>
+          <article class="structure-card">
+            <h3 data-i18n="spotlight_foundry_title">Ashen Foundry</h3>
+            <p data-i18n="spotlight_foundry_desc">A basalt-forged refinery nestled in volcanic biomes with built-in sequenced assembly examples.</p>
+            <ul>
+              <li data-i18n="spotlight_foundry_feature1">Generates in hot-overworld biome tags with adjustable rarity.</li>
+              <li data-i18n="spotlight_foundry_feature2">Features blaze-powered smelteries and deployable automation chains.</li>
+            </ul>
+          </article>
+          <article class="structure-card">
+            <h3 data-i18n="spotlight_observatory_title">Aurora Observatory</h3>
+            <p data-i18n="spotlight_observatory_desc">A snowy research outpost showcasing rotational power routing and contraption logistics.</p>
+            <ul>
+              <li data-i18n="spotlight_observatory_feature1">Rare spawn in snowy slopes and grove biomes.</li>
+              <li data-i18n="spotlight_observatory_feature2">Hidden journal pages unlock lore-friendly advancement chain.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="updates">
+        <div class="section-header">
+          <h2 data-i18n="updates_title">Latest updates</h2>
+          <p data-i18n="updates_subtitle">Track the development focus and plan your server upgrades accordingly.</p>
+        </div>
+        <ol class="update-timeline">
+          <li>
+            <span class="timeline-date" data-i18n="update_entry_1_date">March 2025</span>
+            <h3 data-i18n="update_entry_1_title">1.5.0 &mdash; Automation Pass</h3>
+            <p data-i18n="update_entry_1_desc">Reworked loot tables to include new kinetic starters, added multilingual tooltips and optimized structure palette swaps.</p>
+          </li>
+          <li>
+            <span class="timeline-date" data-i18n="update_entry_2_date">January 2025</span>
+            <h3 data-i18n="update_entry_2_title">1.4.2 &mdash; Performance Hotfix</h3>
+            <p data-i18n="update_entry_2_desc">Improved chunk batching for large schematics and resolved crashes with experimental Flywheel builds.</p>
+          </li>
+          <li>
+            <span class="timeline-date" data-i18n="update_entry_3_date">November 2024</span>
+            <h3 data-i18n="update_entry_3_title">1.4.0 &mdash; Biome Diversity</h3>
+            <p data-i18n="update_entry_3_desc">Introduced region-specific loot variants, added 12 new structure palettes and refreshed datapack templates.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section" id="resources">
+        <div class="info-panels">
+          <article class="info-card">
+            <h3 data-i18n="docs_card_title">Documentation hub</h3>
+            <p data-i18n="docs_card_desc">Reference pages break down installation, structure behaviour, datapack hooks and integration APIs.</p>
+            <ul>
+              <li><a href="pages/installation.html" data-i18n="docs_card_link_install">Installation checklist</a></li>
+              <li><a href="pages/structures.html" data-i18n="docs_card_link_structures">Structure catalogue</a></li>
+              <li><a href="pages/addons.html" data-i18n="docs_card_link_addons">Addon &amp; integration index</a></li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h3 data-i18n="community_card_title">Community resources</h3>
+            <p data-i18n="community_card_desc">Join the conversation, share schematics and help shape the roadmap.</p>
+            <ul>
+              <li><a href="https://discord.gg/BCXqNfPnSh" target="_blank" rel="noopener noreferrer" data-i18n="community_card_link_discord">Discord server</a></li>
+              <li><a href="https://github.com/Denmoth/create_structures_overhaul" target="_blank" rel="noopener noreferrer" data-i18n="community_card_link_github">GitHub issues &amp; contributions</a></li>
+              <li><a href="https://modrinth.com/mod/create-structures-overhaul" target="_blank" rel="noopener noreferrer" data-i18n="community_card_link_modrinth">Modrinth page</a></li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h3 data-i18n="roadmap_card_title">Roadmap highlights</h3>
+            <p data-i18n="roadmap_card_desc">Upcoming work includes narrative quests, Nether expansion packs and configurable contraption exports.</p>
+            <div class="callout" data-i18n="roadmap_card_callout">Have an idea? Drop suggestions in the Discord feedback channel.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section links">
         <div class="link-buttons">
           <a href="https://github.com/Denmoth/create_structures_overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_github">GitHub</a>
           <a href="https://modrinth.com/mod/create-structures-overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_modrinth">Modrinth</a>

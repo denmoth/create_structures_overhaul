@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="../">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="addons_title">Addons & Integrations</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><path fill='%2315b8a6' d='M12 2l3 7h7l-5.6 4.1L17.7 21 12 16.9 6.3 21l1.3-7.9L2 9h7z'/></svg>">
+</head>
+<body class="light">
+  <div class="wrapper">
+    <header>
+      <div class="header-top">
+        <div class="brand">
+          <span class="brand-text" data-i18n="site_title">Create: Structures Overhaul — Wiki</span>
+        </div>
+        <div class="search-container">
+          <input type="text" id="search-input" data-i18n-placeholder="search_placeholder" placeholder="Search documentation…" autocomplete="off">
+          <div class="search-results"></div>
+        </div>
+        <div class="controls">
+          <select id="language-select">
+            <option value="en">🇬🇧 English</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="ua">🇺🇦 Українська</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="es">🇪🇸 Español</option>
+          </select>
+          <button id="theme-toggle" aria-label="Toggle dark/light theme">
+            <svg class="icon sun" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="icon moon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="pages/installation.html" data-i18n="nav_installation">Installation</a></li>
+          <li><a href="pages/structures.html" data-i18n="nav_structures">Structures</a></li>
+          <li><a href="pages/addons.html" data-i18n="nav_addons">Addons & Integrations</a></li>
+          <li><a href="pages/changelog.html" data-i18n="nav_changelog">Changelog</a></li>
+          <li><a href="pages/faq.html" data-i18n="nav_faq">FAQ</a></li>
+          <li><a href="pages/credits.html" data-i18n="nav_credits">Credits</a></li>
+          <li><a href="pages/about.html" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <aside id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="pages/installation.html" data-i18n="nav_installation">Installation</a></li>
+          <li><a href="pages/structures.html" data-i18n="nav_structures">Structures</a></li>
+          <li><a href="pages/addons.html" data-i18n="nav_addons">Addons & Integrations</a></li>
+          <li><a href="pages/changelog.html" data-i18n="nav_changelog">Changelog</a></li>
+          <li><a href="pages/faq.html" data-i18n="nav_faq">FAQ</a></li>
+          <li><a href="pages/credits.html" data-i18n="nav_credits">Credits</a></li>
+          <li><a href="pages/about.html" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main id="content">
+      <section class="page-hero">
+        <span class="badge" data-i18n="addons_title">Addons & Integrations</span>
+        <h1 data-i18n="addons_title">Addons & Integrations</h1>
+        <p data-i18n="addons_desc">Addons to expand the mod's capabilities.</p>
+      </section>
+
+      <section class="page-section">
+        <div class="two-column">
+          <aside class="toc">
+            <h3>Overview</h3>
+            <ul>
+              <li><a href="#featured">Featured addons</a></li>
+              <li><a href="#compatibility">Compatibility matrix</a></li>
+              <li><a href="#api">Developer API</a></li>
+              <li><a href="#submission">Submit your addon</a></li>
+            </ul>
+          </aside>
+          <article>
+            <section id="featured">
+              <h2>Featured addons</h2>
+              <p>Popular community projects that build on Structures Overhaul. Install them alongside the core mod for expanded exploration.</p>
+              <div class="card-grid">
+                <div class="content-card">
+                  <h3>BOP Integration</h3>
+                  <p>Adds structure sets for Biomes O' Plenty, including new palette swaps for redwood forests and lavender fields.</p>
+                  <ul>
+                    <li>Requires Biomes O' Plenty 1.20.1-17.2+</li>
+                    <li>Includes datapack for custom loot and music discs</li>
+                    <li>Maintained by <strong>@AuroraForge</strong></li>
+                  </ul>
+                </div>
+                <div class="content-card">
+                  <h3>Engineer's Manual</h3>
+                  <p>Interactive Patchouli guide that explains each structure, contraption, and recommended progression.</p>
+                  <ul>
+                    <li>Ships with questbook integration for FTB Quests</li>
+                    <li>Supports multiplayer syncing</li>
+                    <li>Maintained by <strong>@Redstoned</strong></li>
+                  </ul>
+                </div>
+                <div class="content-card">
+                  <h3>Nether Expedition Pack</h3>
+                  <p>Experimental expansion that ports Create machinery into the Nether with basalt citadels and blaze-powered elevators.</p>
+                  <ul>
+                    <li>Requires Structures Overhaul 1.5+</li>
+                    <li>Currently in beta — expect schematic changes</li>
+                    <li>Maintained by <strong>@Denmoth</strong></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section id="compatibility">
+              <h2>Compatibility matrix</h2>
+              <p>Use the table below to check support status for major content mods. Green ticks indicate verified datapack compatibility.</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Mod</th>
+                    <th>Support level</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Biomes O' Plenty</td>
+                    <td>✅ Official addon</td>
+                    <td>Install BOP Integration for loot + palette support.</td>
+                  </tr>
+                  <tr>
+                    <td>Oh The Biomes You'll Go</td>
+                    <td>🟡 Community</td>
+                    <td>Community datapack available; adjust spawn weights for dense biomes.</td>
+                  </tr>
+                  <tr>
+                    <td>Terralith</td>
+                    <td>🟢 Native</td>
+                    <td>Built-in tags cover the majority of custom biomes.</td>
+                  </tr>
+                  <tr>
+                    <td>Immersive Engineering</td>
+                    <td>🟡 Community</td>
+                    <td>Optional loot tables add blueprint rewards.</td>
+                  </tr>
+                  <tr>
+                    <td>Ad Astra</td>
+                    <td>🔴 Planned</td>
+                    <td>Space structure set in design, join Discord for testing.</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="callout info">Looking for a specific mod? Browse the #addons channel on Discord for unofficial packs and WIP integrations.</div>
+            </section>
+
+            <section id="api">
+              <h2>Developer API</h2>
+              <p>Extend Structures Overhaul with your own datapacks or code addons. The API exposes helper registries for palettes, loot, and contraption templates.</p>
+              <div class="content-card">
+                <h3>Key entry points</h3>
+                <ul>
+                  <li><code>StructurePaletteRegistry</code> — register block palette swaps and fallback palettes.</li>
+                  <li><code>ContraptionTemplateLoader</code> — define reusable Create contraptions inside structures.</li>
+                  <li><code>AddonLootInjector</code> — attach custom loot pools and advancement triggers.</li>
+                </ul>
+                <div class="callout success">See the <code>example-addon</code> folder on GitHub for a fully annotated starter project.</div>
+              </div>
+            </section>
+
+            <section id="submission">
+              <h2>Submit your addon</h2>
+              <p>Share your addon to get featured in future releases.</p>
+              <ol class="step-list">
+                <li>
+                  <strong>Publish your repository.</strong>
+                  <p>Use a permissive license and include install instructions plus datapack requirements.</p>
+                </li>
+                <li>
+                  <strong>Create a pull request.</strong>
+                  <p>Add your addon to the <code>addons.json</code> index on GitHub with name, author, version, and download links.</p>
+                </li>
+                <li>
+                  <strong>Showcase it to the community.</strong>
+                  <p>Post screenshots or video tours in the Discord <em>#showcase</em> channel for feedback.</p>
+                </li>
+              </ol>
+              <div class="callout warning">All submissions are reviewed for quality. Structures must respect Create’s visual language and avoid excessive loot inflation.</div>
+            </section>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p data-i18n="footer_text">© 2025 Denmoth & Timy228e</p>
+      <p>
+        <a href="https://github.com/Denmoth/create_structures_overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_github">GitHub</a> •
+        <a href="https://modrinth.com/mod/create-structures-overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_modrinth">Modrinth</a> •
+        <a href="https://www.curseforge.com/minecraft/mc-mods/create-structures-overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_curseforge">CurseForge</a> •
+        <a href="https://discord.gg/BCXqNfPnSh" target="_blank" rel="noopener noreferrer" data-i18n="link_discord">Discord</a>
+      </p>
+    </footer>
+  </div>
+  <script src="assets/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="../">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="installation_title">Installation</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><path fill='%2315b8a6' d='M12 2l3 7h7l-5.6 4.1L17.7 21 12 16.9 6.3 21l1.3-7.9L2 9h7z'/></svg>">
+</head>
+<body class="light">
+  <div class="wrapper">
+    <header>
+      <div class="header-top">
+        <div class="brand">
+          <span class="brand-text" data-i18n="site_title">Create: Structures Overhaul — Wiki</span>
+        </div>
+        <div class="search-container">
+          <input type="text" id="search-input" data-i18n-placeholder="search_placeholder" placeholder="Search documentation…" autocomplete="off">
+          <div class="search-results"></div>
+        </div>
+        <div class="controls">
+          <select id="language-select">
+            <option value="en">🇬🇧 English</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="ua">🇺🇦 Українська</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="es">🇪🇸 Español</option>
+          </select>
+          <button id="theme-toggle" aria-label="Toggle dark/light theme">
+            <svg class="icon sun" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="icon moon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="pages/installation.html" data-i18n="nav_installation">Installation</a></li>
+          <li><a href="pages/structures.html" data-i18n="nav_structures">Structures</a></li>
+          <li><a href="pages/addons.html" data-i18n="nav_addons">Addons & Integrations</a></li>
+          <li><a href="pages/changelog.html" data-i18n="nav_changelog">Changelog</a></li>
+          <li><a href="pages/faq.html" data-i18n="nav_faq">FAQ</a></li>
+          <li><a href="pages/credits.html" data-i18n="nav_credits">Credits</a></li>
+          <li><a href="pages/about.html" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <aside id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="pages/installation.html" data-i18n="nav_installation">Installation</a></li>
+          <li><a href="pages/structures.html" data-i18n="nav_structures">Structures</a></li>
+          <li><a href="pages/addons.html" data-i18n="nav_addons">Addons & Integrations</a></li>
+          <li><a href="pages/changelog.html" data-i18n="nav_changelog">Changelog</a></li>
+          <li><a href="pages/faq.html" data-i18n="nav_faq">FAQ</a></li>
+          <li><a href="pages/credits.html" data-i18n="nav_credits">Credits</a></li>
+          <li><a href="pages/about.html" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main id="content">
+      <section class="page-hero">
+        <span class="badge" data-i18n="installation_title">Installation</span>
+        <h1 data-i18n="installation_title">Installation</h1>
+        <p data-i18n="installation_desc">Follow these steps to install the mod.</p>
+      </section>
+
+      <section class="page-section">
+        <div class="two-column">
+          <aside class="toc">
+            <h3>On this page</h3>
+            <ul>
+              <li><a href="#requirements">Requirements</a></li>
+              <li><a href="#steps">Installation steps</a></li>
+              <li><a href="#verification">Verify the setup</a></li>
+              <li><a href="#troubleshooting">Troubleshooting</a></li>
+            </ul>
+          </aside>
+          <article>
+            <section id="requirements">
+              <h2>Requirements</h2>
+              <p>Ensure the following components are installed before loading Structures Overhaul in your world or modpack.</p>
+              <div class="card-grid">
+                <div class="content-card">
+                  <h3>Mod loader</h3>
+                  <p>Forge or NeoForge <strong>1.20.1</strong> with latest recommended build. Older versions are not supported.</p>
+                  <ul class="inline-list">
+                    <li>Java 17 runtime</li>
+                    <li>Create 0.5.1+</li>
+                    <li>Flywheel 0.6+</li>
+                  </ul>
+                </div>
+                <div class="content-card">
+                  <h3>Client & server</h3>
+                  <p>Install on both sides for dedicated servers. Copy the exact same jar to avoid desync and structure mismatches.</p>
+                  <div class="callout info">Server operators should pre-generate worlds to validate biome compatibility.</div>
+                </div>
+                <div class="content-card">
+                  <h3>Optional libraries</h3>
+                  <p>Kotlin for Forge provides scripting hooks used by some addons. Install it if you plan to load integration packs.</p>
+                </div>
+              </div>
+            </section>
+
+            <section id="steps">
+              <h2>Installation steps</h2>
+              <ol class="step-list">
+                <li>
+                  <strong>Download the latest release.</strong>
+                  <p>Grab the <em>Create Structures Overhaul</em> jar from Modrinth, CurseForge, or the GitHub releases page.</p>
+                </li>
+                <li>
+                  <strong>Place the jar in <code>/mods</code>.</strong>
+                  <p>Keep the file name intact. If you are updating from an older version, remove the previous jar to avoid duplicate structures.</p>
+                </li>
+                <li>
+                  <strong>Copy the default datapacks.</strong>
+                  <p>The archive includes optional datapacks that expose worldgen presets and loot tables. Drop them into the <code>/datapacks</code> folder for each save.</p>
+                </li>
+                <li>
+                  <strong>Update configuration files.</strong>
+                  <p>Launch once to generate <code>config/create-structures-overhaul</code>, then edit spawn weights, biome tags, or loot pools to match your pack.</p>
+                </li>
+              </ol>
+            </section>
+
+            <section id="verification">
+              <h2>Verify the setup</h2>
+              <p>After launching the game, confirm the mod loaded correctly.</p>
+              <ul>
+                <li>Open the in-game mod list and ensure <strong>Create: Structures Overhaul</strong> appears without warnings.</li>
+                <li>Run the <code>/cso locate ashen_foundry</code> command in a creative test world to confirm the structure registry is active.</li>
+                <li>If you are using a server, check the console for the <em>Generated structure palette registry</em> log entry.</li>
+              </ul>
+              <div class="callout success">Tip: add the provided <code>cso_dev</code> datapack when testing new structure packs to see debug bounding boxes.</div>
+            </section>
+
+            <section id="troubleshooting">
+              <h2>Troubleshooting</h2>
+              <p>If the game fails to load or no structures appear, walk through the following checklist.</p>
+              <div class="content-card">
+                <h3>Common issues</h3>
+                <ul>
+                  <li><strong>Duplicate mods:</strong> ensure only one copy of the jar exists in <code>/mods</code>.</li>
+                  <li><strong>Missing dependencies:</strong> update Create, Flywheel, and Kotlin to their latest versions.</li>
+                  <li><strong>Unsupported world version:</strong> the add-on targets Minecraft 1.20.1 only.</li>
+                  <li><strong>Biome conflicts:</strong> adjust datapack tags if other mods replace vanilla biome IDs.</li>
+                </ul>
+              </div>
+              <div class="callout warning">Still stuck? Collect your <code>latest.log</code> and open an issue on GitHub with the <em>installation</em> label.</div>
+            </section>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p data-i18n="footer_text">© 2025 Denmoth & Timy228e</p>
+      <p>
+        <a href="https://github.com/Denmoth/create_structures_overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_github">GitHub</a> •
+        <a href="https://modrinth.com/mod/create-structures-overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_modrinth">Modrinth</a> •
+        <a href="https://www.curseforge.com/minecraft/mc-mods/create-structures-overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_curseforge">CurseForge</a> •
+        <a href="https://discord.gg/BCXqNfPnSh" target="_blank" rel="noopener noreferrer" data-i18n="link_discord">Discord</a>
+      </p>
+    </footer>
+  </div>
+  <script src="assets/js/scripts.js"></script>
+</body>
+</html>

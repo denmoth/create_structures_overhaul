@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="../">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="structures_title">Structures</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><path fill='%2315b8a6' d='M12 2l3 7h7l-5.6 4.1L17.7 21 12 16.9 6.3 21l1.3-7.9L2 9h7z'/></svg>">
+</head>
+<body class="light">
+  <div class="wrapper">
+    <header>
+      <div class="header-top">
+        <div class="brand">
+          <span class="brand-text" data-i18n="site_title">Create: Structures Overhaul — Wiki</span>
+        </div>
+        <div class="search-container">
+          <input type="text" id="search-input" data-i18n-placeholder="search_placeholder" placeholder="Search documentation…" autocomplete="off">
+          <div class="search-results"></div>
+        </div>
+        <div class="controls">
+          <select id="language-select">
+            <option value="en">🇬🇧 English</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="ua">🇺🇦 Українська</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="es">🇪🇸 Español</option>
+          </select>
+          <button id="theme-toggle" aria-label="Toggle dark/light theme">
+            <svg class="icon sun" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="icon moon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="pages/installation.html" data-i18n="nav_installation">Installation</a></li>
+          <li><a href="pages/structures.html" data-i18n="nav_structures">Structures</a></li>
+          <li><a href="pages/addons.html" data-i18n="nav_addons">Addons & Integrations</a></li>
+          <li><a href="pages/changelog.html" data-i18n="nav_changelog">Changelog</a></li>
+          <li><a href="pages/faq.html" data-i18n="nav_faq">FAQ</a></li>
+          <li><a href="pages/credits.html" data-i18n="nav_credits">Credits</a></li>
+          <li><a href="pages/about.html" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <aside id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="pages/installation.html" data-i18n="nav_installation">Installation</a></li>
+          <li><a href="pages/structures.html" data-i18n="nav_structures">Structures</a></li>
+          <li><a href="pages/addons.html" data-i18n="nav_addons">Addons & Integrations</a></li>
+          <li><a href="pages/changelog.html" data-i18n="nav_changelog">Changelog</a></li>
+          <li><a href="pages/faq.html" data-i18n="nav_faq">FAQ</a></li>
+          <li><a href="pages/credits.html" data-i18n="nav_credits">Credits</a></li>
+          <li><a href="pages/about.html" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main id="content">
+      <section class="page-hero">
+        <span class="badge" data-i18n="structures_title">Structures</span>
+        <h1 data-i18n="structures_title">Structures</h1>
+        <p data-i18n="structures_desc">Overview of all structures and their attributes.</p>
+      </section>
+
+      <section class="page-section">
+        <div class="two-column">
+          <aside class="toc">
+            <h3>Catalogue</h3>
+            <ul>
+              <li><a href="#categories">Structure families</a></li>
+              <li><a href="#biomes">Biome distribution</a></li>
+              <li><a href="#loot">Loot profiles</a></li>
+              <li><a href="#configuration">Configuration</a></li>
+            </ul>
+          </aside>
+          <article>
+            <section id="categories">
+              <h2>Structure families</h2>
+              <p>Structures are organised into thematic families. Each family shares palette rules, loot pools, and contraption tutorials.</p>
+              <div class="card-grid">
+                <div class="content-card">
+                  <h3>Industrial complexes</h3>
+                  <p>Large multi-room facilities showcasing Create automation loops. Expect drills, sequenced assembly, and fluid processing.</p>
+                  <ul>
+                    <li>Ashen Foundry</li>
+                    <li>Clockwork Refinery</li>
+                    <li>Verdant Assembly Line</li>
+                  </ul>
+                </div>
+                <div class="content-card">
+                  <h3>Frontier outposts</h3>
+                  <p>Smaller self-contained bases that introduce players to transportation mechanics and supply chains.</p>
+                  <ul>
+                    <li>Aurora Observatory</li>
+                    <li>Workshop Caravan</li>
+                    <li>Skyport Docks</li>
+                  </ul>
+                </div>
+                <div class="content-card">
+                  <h3>World curiosities</h3>
+                  <p>Rare generation pieces used for lore breadcrumbs, unique loot, and advancement triggers.</p>
+                  <ul>
+                    <li>Temporal Archive</li>
+                    <li>Vault of Echoes</li>
+                    <li>Gilded Relay</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section id="biomes">
+              <h2>Biome distribution</h2>
+              <p>Spawn rules leverage biome tags to ensure compatibility with other worldgen mods. Adjust weights via datapacks to blend with your pack.</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Structure</th>
+                    <th>Biome tags</th>
+                    <th>Height range</th>
+                    <th>Rarity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Skyport Docks</td>
+                    <td><code>#forge:is_ocean</code>, <code>#minecraft:is_overworld</code></td>
+                    <td>Y120 – Y150</td>
+                    <td>Rare (1 per 35 chunks)</td>
+                  </tr>
+                  <tr>
+                    <td>Ashen Foundry</td>
+                    <td><code>#cso:hot_overworld</code>, <code>#forge:is_mountain</code></td>
+                    <td>Y64 – Y90</td>
+                    <td>Uncommon (1 per 24 chunks)</td>
+                  </tr>
+                  <tr>
+                    <td>Aurora Observatory</td>
+                    <td><code>#minecraft:is_snowy</code>, <code>#cso:cold_forest</code></td>
+                    <td>Y90 – Y130</td>
+                    <td>Very rare (1 per 60 chunks)</td>
+                  </tr>
+                  <tr>
+                    <td>Workshop Caravan</td>
+                    <td><code>#minecraft:is_badlands</code>, <code>#forge:is_desert</code></td>
+                    <td>Y70 – Y100</td>
+                    <td>Uncommon (1 per 28 chunks)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section id="loot">
+              <h2>Loot profiles</h2>
+              <p>Each structure family uses layered loot tables. The primary roll grants Create components while secondary rolls include datapack hooks for modpack authors.</p>
+              <div class="content-card">
+                <h3>Default loot layout</h3>
+                <ul>
+                  <li><strong>Core crate:</strong> shafts, cogwheels, mechanical pistons, andesite alloy.</li>
+                  <li><strong>Specialty barrel:</strong> deployer hands, redstone contacts, schematicannon ammo.</li>
+                  <li><strong>Data cache:</strong> lore books that trigger advancements or guide quests.</li>
+                  <li><strong>Bonus roll:</strong> integration tokens consumed by addon datapacks.</li>
+                </ul>
+                <div class="callout info">Override loot pools by copying <code>data/cso/loot_tables/</code> into a datapack and editing the JSON entries.</div>
+              </div>
+            </section>
+
+            <section id="configuration">
+              <h2>Configuration</h2>
+              <p>The mod exposes multiple layers for customizing world generation.</p>
+              <div class="card-grid">
+                <div class="content-card">
+                  <h3>Global config</h3>
+                  <p>Edit <code>config/create-structures-overhaul.toml</code> to toggle structure families, adjust spacing, or switch loot difficulty presets.</p>
+                </div>
+                <div class="content-card">
+                  <h3>Datapack overrides</h3>
+                  <p>Use <code>data/&lt;pack&gt;/worldgen/structure_set</code> to redefine spawn frequencies and add modded biome tags.</p>
+                </div>
+                <div class="content-card">
+                  <h3>Per-structure JSON</h3>
+                  <p>Fine-tune block palette swaps, contraption templates, and jigsaw rules inside <code>data/cso/structures</code>.</p>
+                </div>
+              </div>
+              <div class="callout success">Remember to run <code>/reload</code> after editing datapacks. Use <code>/cso debug palette</code> to print active palette rules.</div>
+            </section>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p data-i18n="footer_text">© 2025 Denmoth & Timy228e</p>
+      <p>
+        <a href="https://github.com/Denmoth/create_structures_overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_github">GitHub</a> •
+        <a href="https://modrinth.com/mod/create-structures-overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_modrinth">Modrinth</a> •
+        <a href="https://www.curseforge.com/minecraft/mc-mods/create-structures-overhaul" target="_blank" rel="noopener noreferrer" data-i18n="link_curseforge">CurseForge</a> •
+        <a href="https://discord.gg/BCXqNfPnSh" target="_blank" rel="noopener noreferrer" data-i18n="link_discord">Discord</a>
+      </p>
+    </footer>
+  </div>
+  <script src="assets/js/scripts.js"></script>
+</body>
+</html>
