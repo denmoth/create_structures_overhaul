@@ -801,54 +801,176 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   highlightActiveNav();
 });
-
-// === Enhancements injected ===
-(function enhanceUI(){
+document.addEventListener('DOMContentLoaded', () => {
+  // default to dark if no saved preference
+  const saved = localStorage.getItem('theme');
+  if (!saved) { document.body.classList.remove('light'); document.body.classList.add('dark'); }
+  // collapse arrow
+  const arrow = document.getElementById('collapse-arrow');
   const nav = document.querySelector('.top-nav');
-  if (nav && !document.querySelector('.top-nav-toggle')) {
-    const btn = document.createElement('button');
-    btn.className = 'top-nav-toggle';
-    btn.setAttribute('aria-expanded','true');
-    btn.innerHTML = '<span data-i18n="nav_toggle">Collapse navigation</span> <span class="chev">▾</span>';
-    nav.insertAdjacentElement('afterend', btn);
-    btn.addEventListener('click', () => {
+  if (arrow && nav) {
+    arrow.style.cursor = 'pointer';
+    arrow.title = 'Toggle navigation';
+    arrow.addEventListener('click', () => {
       nav.classList.toggle('collapsed');
-      const expanded = !nav.classList.contains('collapsed');
-      btn.setAttribute('aria-expanded', String(expanded));
+      arrow.style.transform = nav.classList.contains('collapsed') ? 'rotate(-90deg)' : 'rotate(0deg)';
     });
   }
+});
 
-  // Make moon icon visible on dark; if icon exists, ensure it inherits currentColor
-  document.querySelectorAll('.icon.moon').forEach(el => { el.style.fill = 'currentColor'; el.style.color = '#fff'; });
 
-  // Changelog filters
-  const tl = document.querySelector('.update-timeline');
-  if (tl && !document.querySelector('.changelog-filters')) {
-    const wrap = document.createElement('div');
-    wrap.className = 'changelog-filters';
-    wrap.innerHTML = `
-      <input id="chg-filter" type="search" placeholder="Filter by version or text…" data-i18n-placeholder="changelog_filter_placeholder">
-      <select id="chg-tag">
-        <option value="" data-i18n="changelog_filter_all">All tags</option>
-        <option value="feature" data-i18n="tag_feature">Features</option>
-        <option value="fix" data-i18n="tag_fix">Fixes</option>
-        <option value="perf" data-i18n="tag_perf">Performance</option>
-      </select>
-    `;
-    tl.parentElement.insertBefore(wrap, tl);
-    const q = wrap.querySelector('#chg-filter');
-    const tag = wrap.querySelector('#chg-tag');
-    function apply(){
-      const needle = (q.value||'').toLowerCase();
-      const t = tag.value;
-      tl.querySelectorAll(':scope > li').forEach(li => {
-        const text = li.textContent.toLowerCase();
-        const okText = !needle || text.includes(needle);
-        const okTag = !t || (li.dataset.tags||'').split(',').includes(t);
-        li.style.display = (okText && okTag) ? '' : 'none';
-      });
-    }
-    q.addEventListener('input', apply);
-    tag.addEventListener('change', apply);
+// i18n bundle (manual texts)
+const i18nExtra = {
+  en: {
+    nav_known: "Known Issues",
+    known_title: "Known Issues",
+    known_desc: "Current limitations and bugs tracked for upcoming fixes.",
+    known_loot_bug: "In several newly added structures, loot does not generate correctly. Fix planned in version 1.4.1.",
+    home_intro_title: "Handcrafted structures. Real Create mechanics. Exploration that matters.",
+    home_intro_desc: "Create: Structures Overhaul adds atmospheric builds with traps, references and functional contraptions. Supports 1.20.1 Forge/Fabric, 1.21.1 NeoForge. Designed for Create 0.6.0+.",
+    home_card_install: "Install",
+    home_card_install_desc: "Requirements and setup for client and server.",
+    home_card_structures: "Structures",
+    home_card_structures_desc: "Browse all structure sets and tags.",
+    home_card_changelog: "Changelog",
+    home_card_changelog_desc: "Latest versions and fixes.",
+    home_card_known: "Known Issues",
+    home_card_known_desc: "Current limitations and work-in-progress fixes.",
+    struct_overview: "Overview",
+    struct_overview_desc: "All structures are handcrafted and biome-aware. Some contain traps, references and Create contraptions.",
+    struct_windmills: "Windmill Variations",
+    struct_spooky: "Halloween Set",
+    struct_copper: "Copper Update",
+    struct_nether: "Nether Expansion",
+    struct_misc: "Other Structures",
+    footer_text: "© 2025 Denmoth"
+  },
+  ru: {
+    nav_known: "Известные баги",
+    known_title: "Известные баги",
+    known_desc: "Текущие ограничения и ошибки, запланированные к исправлению.",
+    known_loot_bug: "В некоторых новых структурах лут генерируется некорректно. Исправление запланировано в версии 1.4.1.",
+    home_intro_title: "Ручные структуры. Настоящие механики Create. Исследование со смыслом.",
+    home_intro_desc: "Create: Structures Overhaul добавляет атмосферные постройки с ловушками, отсылками и рабочими механизмами. Поддержка 1.20.1 Forge/Fabric, 1.21.1 NeoForge. Разрабатывается для Create 0.6.0+.",
+    home_card_install: "Установка",
+    home_card_install_desc: "Требования и настройка для клиента и сервера.",
+    home_card_structures: "Структуры",
+    home_card_structures_desc: "Каталог линеек и теги.",
+    home_card_changelog: "Изменения",
+    home_card_changelog_desc: "Последние версии и фиксы.",
+    home_card_known: "Известные баги",
+    home_card_known_desc: "Текущие ограничения и работа над исправлениями.",
+    struct_overview: "Обзор",
+    struct_overview_desc: "Все структуры создаются вручную и учитывают биомы. В некоторых есть ловушки, отсылки и механизмы Create.",
+    struct_windmills: "Варианты мельниц",
+    struct_spooky: "Линейка Хэллоуин",
+    struct_copper: "Медное обновление",
+    struct_nether: "Расширение ада",
+    struct_misc: "Прочие структуры",
+    footer_text: "© 2025 Denmoth"
+  },
+  ua: {
+    nav_known: "Відомі баги",
+    known_title: "Відомі баги",
+    known_desc: "Поточні обмеження та помилки, заплановані до виправлення.",
+    known_loot_bug: "У кількох нових структурах лут генерується некоректно. Виправлення заплановано у версії 1.4.1.",
+    home_intro_title: "Ручні структури. Справжні механіки Create. Дослідження зі змістом.",
+    home_intro_desc: "Create: Structures Overhaul додає атмосферні будівлі з пастками, відсиланнями та робочими механізмами. Підтримка 1.20.1 Forge/Fabric, 1.21.1 NeoForge. Розробляється для Create 0.6.0+.",
+    home_card_install: "Встановлення",
+    home_card_install_desc: "Вимоги та налаштування для клієнта й сервера.",
+    home_card_structures: "Структури",
+    home_card_structures_desc: "Каталог лінійок і теги.",
+    home_card_changelog: "Зміни",
+    home_card_changelog_desc: "Останні версії та виправлення.",
+    home_card_known: "Відомі баги",
+    home_card_known_desc: "Поточні обмеження та робота над виправленнями.",
+    struct_overview: "Огляд",
+    struct_overview_desc: "Усі структури створені вручну та враховують біоми. Деякі мають пастки, відсилання й механізми Create.",
+    struct_windmills: "Варіації млинів",
+    struct_spooky: "Гелловін-набір",
+    struct_copper: "Мідне оновлення",
+    struct_nether: "Розширення Незеру",
+    struct_misc: "Інші структури",
+    footer_text: "© 2025 Denmoth"
+  },
+  de: {
+    nav_known: "Bekannte Probleme",
+    known_title: "Bekannte Probleme",
+    known_desc: "Aktuelle Einschränkungen und Bugs, die demnächst behoben werden.",
+    known_loot_bug: "Bei einigen neuen Strukturen wird der Loot nicht korrekt erzeugt. Fix geplant in Version 1.4.1.",
+    home_intro_title: "Handgefertigte Strukturen. Echte Create‑Mechaniken. Erkundung mit Sinn.",
+    home_intro_desc: "Create: Structures Overhaul fügt atmosphärische Bauten mit Fallen, Anspielungen und funktionalen Apparaten hinzu. Unterstützt 1.20.1 Forge/Fabric, 1.21.1 NeoForge. Ausgelegt für Create 0.6.0+.",
+    home_card_install: "Installation",
+    home_card_install_desc: "Voraussetzungen und Setup für Client und Server.",
+    home_card_structures: "Strukturen",
+    home_card_structures_desc: "Alle Sets und Tags durchsuchen.",
+    home_card_changelog: "Changelog",
+    home_card_changelog_desc: "Neueste Versionen und Fixes.",
+    home_card_known: "Bekannte Probleme",
+    home_card_known_desc: "Aktuelle Einschränkungen und laufende Fixes.",
+    struct_overview: "Überblick",
+    struct_overview_desc: "Alle Strukturen sind handgefertigt und biombewusst. Einige enthalten Fallen, Anspielungen und Create‑Apparate.",
+    struct_windmills: "Windmühlen‑Varianten",
+    struct_spooky: "Halloween‑Set",
+    struct_copper: "Kupfer‑Update",
+    struct_nether: "Nether‑Erweiterung",
+    struct_misc: "Weitere Strukturen",
+    footer_text: "© 2025 Denmoth"
+  },
+  fr: {
+    nav_known: "Problèmes connus",
+    known_title: "Problèmes connus",
+    known_desc: "Limites actuelles et bugs suivis pour les prochaines corrections.",
+    known_loot_bug: "Sur plusieurs nouvelles structures, le butin ne se génère pas correctement. Correctif prévu en 1.4.1.",
+    home_intro_title: "Structures artisanales. Mécaniques Create réelles. Exploration qui compte.",
+    home_intro_desc: "Create: Structures Overhaul ajoute des constructions atmosphériques avec pièges, références et mécanismes fonctionnels. Prend en charge 1.20.1 Forge/Fabric, 1.21.1 NeoForge. Conçu pour Create 0.6.0+.",
+    home_card_install: "Installation",
+    home_card_install_desc: "Prérequis et configuration pour client et serveur.",
+    home_card_structures: "Structures",
+    home_card_structures_desc: "Parcourir tous les ensembles et tags.",
+    home_card_changelog: "Journal des modifications",
+    home_card_changelog_desc: "Dernières versions et correctifs.",
+    home_card_known: "Problèmes connus",
+    home_card_known_desc: "Limites actuelles et correctifs en cours.",
+    struct_overview: "Aperçu",
+    struct_overview_desc: "Toutes les structures sont faites à la main et sensibles aux biomes. Certaines contiennent des pièges, des références et des mécanismes Create.",
+    struct_windmills: "Variations de moulins",
+    struct_spooky: "Ensemble Halloween",
+    struct_copper: "Mise à jour Cuivre",
+    struct_nether: "Extension du Nether",
+    struct_misc: "Autres structures",
+    footer_text: "© 2025 Denmoth"
+  },
+  es: {
+    nav_known: "Problemas conocidos",
+    known_title: "Problemas conocidos",
+    known_desc: "Limitaciones actuales y errores planificados para corregir.",
+    known_loot_bug: "En varias estructuras nuevas, el botín no se genera correctamente. Arreglo previsto en la versión 1.4.1.",
+    home_intro_title: "Estructuras artesanales. Mecánicas reales de Create. Exploración con sentido.",
+    home_intro_desc: "Create: Structures Overhaul añade construcciones atmosféricas con trampas, referencias y mecanismos funcionales. Soporta 1.20.1 Forge/Fabric, 1.21.1 NeoForge. Diseñado para Create 0.6.0+.",
+    home_card_install: "Instalación",
+    home_card_install_desc: "Requisitos y configuración para cliente y servidor.",
+    home_card_structures: "Estructuras",
+    home_card_structures_desc: "Explora todos los conjuntos y etiquetas.",
+    home_card_changelog: "Registro de cambios",
+    home_card_changelog_desc: "Últimas versiones y correcciones.",
+    home_card_known: "Problemas conocidos",
+    home_card_known_desc: "Limitaciones actuales y correcciones en progreso.",
+    struct_overview: "Resumen",
+    struct_overview_desc: "Todas las estructuras están hechas a mano y adaptadas a biomas. Algunas contienen trampas, referencias y mecanismos de Create.",
+    struct_windmills: "Variantes de molinos",
+    struct_spooky: "Conjunto de Halloween",
+    struct_copper: "Actualización de Cobre",
+    struct_nether: "Expansión del Nether",
+    struct_misc: "Otras estructuras",
+    footer_text: "© 2025 Denmoth"
   }
-})();
+};
+// merge into existing translations if present
+try {
+  if (typeof translations !== 'undefined') {
+    for (const [lang, dict] of Object.entries(i18nExtra)) {
+      translations[lang] = Object.assign({}, translations[lang]||{}, dict);
+    }
+  }
+} catch(e){}
