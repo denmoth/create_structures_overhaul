@@ -3,9 +3,9 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-group = 'denmoth.createstructures'
-version = '1.4.0'
-archivesBaseName = 'create_structures_overhaul'
+group = property('mod_group')
+version = property('mod_version')
+archivesBaseName = property('mod_id')
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -13,79 +13,86 @@ java {
 
 minecraft {
     mappings channel: 'official', version: '1.20.1'
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-            args '--username', 'DevPlayer'
-            mods {
-                create_structures_overhaul {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run_server')
-            args '--nogui'
-            mods {
-                create_structures_overhaul {
-                    source sourceSets.main
-                }
-            }
-        }
-    }
 }
 
-// ---------------- MAVEN ----------------
 repositories {
-    maven { url = "https://maven.minecraftforge.net" }
     mavenCentral()
+    maven { url = "https://maven.minecraftforge.net" }
 }
 
-// ---------------- DEPENDENCIES ----------------
 dependencies {
     minecraft "net.minecraftforge:forge:1.20.1-47.2.20"
-    // никаких dev-зависимостей — Create будет лежать в run/mods
 }
-
-// ---------------- jarJar ----------------
-jarJar.enable()
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-tasks.withType(Jar).configureEach {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version   : "1.20.1",
+            minecraft_version_range: "[1.20.1]",
+            forge_version       : "47.2.20",
+            forge_version_range : "[47,)",
+            loader_version_range: "[47,)",
+            mod_id              : project.property('mod_id'),
+            mod_name            : "Create: Structures Overhaul",
+            mod_license         : "MIT License",
+            mod_version         : project.property('mod_version'), // Берет 1.4.1 из gradle.properties
+            mod_authors         : "Denmoth",
+            mod_description     : "This mod adding some structures to create mod"
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+tasks.named('jar') {
     manifest {
         attributes([
-            'Specification-Title'   : 'Create Structures Overhaul',
-            'Specification-Vendor'  : 'Denmoth',
-            'Specification-Version' : version,
-            'Implementation-Title'  : archivesBaseName,
-            'Implementation-Version': version,
-            'Implementation-Vendor' : 'Denmoth'
+                "Specification-Title"     : "Create Structures Overhaul",
+                "Specification-Vendor"    : "Denmoth",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "Denmoth",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
 
-// --------- автокопирование в run/mods ----------
-tasks.register('copyToRunMods', Copy) {
-    dependsOn jar
-    from("$buildDir/libs/${archivesBaseName}-${version}.jar")
-    into("$projectDir/run/mods")
-}
+tasks.register('runInPrism', Exec) {
+    dependsOn tasks.jar
+    group = "execution"
 
-afterEvaluate {
-    tasks.findByName("runClient")?.configure {
-        dependsOn tasks.named("copyToRunMods")
+    def prismExe = project.hasProperty('global_prism_exe') ? project.property('global_prism_exe') : null
+    def instancesDir = project.hasProperty('global_prism_instances_path') ? project.property('global_prism_instances_path') : null
+
+    def instanceName = project.hasProperty('prism_instance_name') ? project.property('prism_instance_name') : null
+    def targetModId = project.hasProperty('mod_id') ? project.property('mod_id') : "examplemod"
+
+    doFirst {
+        if (!prismExe || !instancesDir || !instanceName) {
+            throw new GradleException("Missing properties! Check global .gradle/gradle.properties for paths and local gradle.properties for instance name.")
+        }
+
+        def modsDir = file("${instancesDir}/${instanceName}/minecraft/mods")
+
+        println "Installing mod to: ${modsDir}" // Полезно для отладки
+
+        if (!modsDir.exists()) {
+            throw new GradleException("Mods directory not found: ${modsDir}. Check your instance name!")
+        }
+
+        fileTree(dir: modsDir, include: "${targetModId}-*.jar").each { delete it }
+
+        copy {
+            from tasks.jar.archiveFile
+            into modsDir
+        }
     }
-}
 
-// Комбинированная команда
-tasks.register('devrun') {
-    group = "development"
-    description = "Builds mod, copies to run/mods and runs client."
-    dependsOn 'build', 'copyToRunMods', 'runClient'
+    commandLine prismExe, "--launch", instanceName
 }
