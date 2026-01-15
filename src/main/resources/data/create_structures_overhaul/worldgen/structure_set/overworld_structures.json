@@ -13,10 +13,6 @@
       "weight": 1
     },
     {
-      "structure": "create_structures_overhaul:warped_greenhouse",
-      "weight": 1
-    },
-    {
       "structure": "create_structures_overhaul:nether_forpost",
       "weight": 1
     },
@@ -59,10 +55,6 @@
     {
       "structure": "create_structures_overhaul:lightningrodtower",
       "weight": 1
-    },
-    {
-      "structure": "create_structures_overhaul:filler",
-      "weight": 8
     },
     {
       "structure": "create_structures_overhaul:spooky_house1",
