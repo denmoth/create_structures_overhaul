@@ -280,8 +280,8 @@
                 {
                     "type": "item",
                     "name": "create:cogwheel",
-                    "weight": 1,
-                    ]
+                    "weight": 1
+
                 }
             ]
         }
