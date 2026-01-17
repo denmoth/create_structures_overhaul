@@ -13,15 +13,69 @@ java {
 
 minecraft {
     mappings channel: 'official', version: '1.20.1'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
 }
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     mavenCentral()
     maven { url = "https://maven.minecraftforge.net" }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:1.20.1-47.2.20"
+    minecraft "net.minecraftforge:forge:1.20.1-47.3.0"
+    implementation fg.deobf("curse.maven:create-328085:6247663")
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -32,15 +86,15 @@ tasks.named('processResources', ProcessResources).configure {
     var replaceProperties = [
             minecraft_version   : "1.20.1",
             minecraft_version_range: "[1.20.1]",
-            forge_version       : "47.2.20",
+            forge_version       : "47.3.0",
             forge_version_range : "[47,)",
             loader_version_range: "[47,)",
             mod_id              : project.property('mod_id'),
             mod_name            : "Create: Structures Overhaul",
             mod_license         : "MIT License",
-            mod_version         : project.property('mod_version'), // Берет 1.4.1 из gradle.properties
+            mod_version         : project.property('mod_version'),
             mod_authors         : "Denmoth",
-            mod_description     : "This mod adding some structures to create mod"
+            mod_description     : "Overhauls exploration by adding immersive, Create-themed structures to the world."
     ]
     inputs.properties replaceProperties
 
@@ -61,6 +115,8 @@ tasks.named('jar') {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+
+    finalizedBy 'reobfJar'
 }
 
 tasks.register('runInPrism', Exec) {
@@ -69,30 +125,18 @@ tasks.register('runInPrism', Exec) {
 
     def prismExe = project.hasProperty('global_prism_exe') ? project.property('global_prism_exe') : null
     def instancesDir = project.hasProperty('global_prism_instances_path') ? project.property('global_prism_instances_path') : null
-
     def instanceName = project.hasProperty('prism_instance_name') ? project.property('prism_instance_name') : null
     def targetModId = project.hasProperty('mod_id') ? project.property('mod_id') : "examplemod"
 
     doFirst {
         if (!prismExe || !instancesDir || !instanceName) {
-            throw new GradleException("Missing properties! Check global .gradle/gradle.properties for paths and local gradle.properties for instance name.")
+            throw new GradleException("Missing properties! Check global .gradle/gradle.properties")
         }
-
         def modsDir = file("${instancesDir}/${instanceName}/minecraft/mods")
-
-        println "Installing mod to: ${modsDir}" // Полезно для отладки
-
-        if (!modsDir.exists()) {
-            throw new GradleException("Mods directory not found: ${modsDir}. Check your instance name!")
-        }
+        if (!modsDir.exists()) throw new GradleException("Mods directory not found: ${modsDir}")
 
         fileTree(dir: modsDir, include: "${targetModId}-*.jar").each { delete it }
-
-        copy {
-            from tasks.jar.archiveFile
-            into modsDir
-        }
+        copy { from tasks.jar.archiveFile; into modsDir }
     }
-
     commandLine prismExe, "--launch", instanceName
 }
