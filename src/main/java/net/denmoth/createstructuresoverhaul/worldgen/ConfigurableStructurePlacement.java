@@ -47,15 +47,11 @@ public class ConfigurableStructurePlacement extends RandomSpreadStructurePlaceme
         return ModPlacementTypes.CONFIGURABLE.get();
     }
 
-    // === OVERRIDES TO USE CONFIG ===
-
     @Override
     public int spacing() {
-        // Если конфиг загружен, берем значения оттуда. Иначе берем дефолт из JSON.
         if (CSOConfig.COMMON_SPEC.isLoaded()) {
             return switch (cfgType) {
-                case WINDMILLS -> CSOConfig.WINDMILLS_SPACING.get();
-                case SPOOKY -> CSOConfig.SPOOKY_SPACING.get();
+                case OVERWORLD -> CSOConfig.OVERWORLD_SPACING.get();
                 case NETHER -> CSOConfig.NETHER_SPACING.get();
             };
         }
@@ -65,42 +61,31 @@ public class ConfigurableStructurePlacement extends RandomSpreadStructurePlaceme
     @Override
     public int separation() {
         if (CSOConfig.COMMON_SPEC.isLoaded()) {
-            int spacing = spacing(); // Берем актуальный spacing
+            int spacing = spacing();
             int separation = switch (cfgType) {
-                case WINDMILLS -> CSOConfig.WINDMILLS_SEPARATION.get();
-                case SPOOKY -> CSOConfig.SPOOKY_SEPARATION.get();
+                case OVERWORLD -> CSOConfig.OVERWORLD_SEPARATION.get();
                 case NETHER -> CSOConfig.NETHER_SEPARATION.get();
             };
-            // Валидация: Separation должен быть меньше Spacing
             return Math.min(separation, spacing - 1);
         }
         return super.separation();
     }
 
-    // === PUBLIC ACCESSORS FOR CODEC ===
-
-    @Override
-    public Vec3i locateOffset() { return super.locateOffset(); }
-    @Override
-    public FrequencyReductionMethod frequencyReductionMethod() { return super.frequencyReductionMethod(); }
-    @Override
-    public float frequency() { return super.frequency(); }
-    @Override
-    public int salt() { return super.salt(); }
-    @Override
-    public Optional<ExclusionZone> exclusionZone() { return super.exclusionZone(); }
-    @Override
-    public RandomSpreadType spreadType() { return super.spreadType(); }
+    // === DELEGATE METHODS ===
+    @Override public Vec3i locateOffset() { return super.locateOffset(); }
+    @Override public FrequencyReductionMethod frequencyReductionMethod() { return super.frequencyReductionMethod(); }
+    @Override public float frequency() { return super.frequency(); }
+    @Override public int salt() { return super.salt(); }
+    @Override public Optional<ExclusionZone> exclusionZone() { return super.exclusionZone(); }
+    @Override public RandomSpreadType spreadType() { return super.spreadType(); }
 
     public enum CfgType implements StringRepresentable {
-        WINDMILLS("windmills"),
-        SPOOKY("spooky"),
+        OVERWORLD("overworld"),
         NETHER("nether");
 
         public static final Codec<CfgType> CODEC = StringRepresentable.fromEnum(CfgType::values);
         private final String name;
         CfgType(String name) { this.name = name; }
-        @Override
-        public String getSerializedName() { return name; }
+        @Override public String getSerializedName() { return name; }
     }
 }

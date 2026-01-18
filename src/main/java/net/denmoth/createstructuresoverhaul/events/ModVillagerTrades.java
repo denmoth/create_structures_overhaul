@@ -24,12 +24,12 @@ public class ModVillagerTrades {
 
             if (trades.get(3) != null) {
                 trades.get(3).add((pTrader, pRandom) ->
-                        createMapTrade(pTrader, ModTags.SPOOKY_LOCATIONS, "item.cso.haunted_map", MapDecoration.Type.MANSION, 100));
+                        createMapTrade(pTrader, ModTags.SPOOKY_LOCATIONS, "item.cso.haunted_map", MapDecoration.Type.MANSION, 50));
             }
 
             if (trades.get(4) != null) {
                 trades.get(4).add((pTrader, pRandom) ->
-                        createMapTrade(pTrader, ModTags.NETHER_COMPLEX, "item.cso.nether_map", MapDecoration.Type.RED_X, 100));
+                        createMapTrade(pTrader, ModTags.NETHER_COMPLEX, "item.cso.nether_map", MapDecoration.Type.RED_X, 50));
             }
         }
     }
@@ -37,9 +37,8 @@ public class ModVillagerTrades {
     private static MerchantOffer createMapTrade(net.minecraft.world.entity.Entity pTrader, net.minecraft.tags.TagKey<net.minecraft.world.level.levelgen.structure.Structure> tag, String translationKey, MapDecoration.Type icon, int radius) {
         if (!(pTrader.level() instanceof ServerLevel serverLevel)) return null;
 
-        // TODO: Optimize structure search. Can cause lag.
-        var pos = serverLevel.findNearestMapStructure(tag, pTrader.blockPosition(), radius, true);
         ItemStack mapItem;
+        var pos = serverLevel.findNearestMapStructure(tag, pTrader.blockPosition(), radius, true);
 
         if (pos != null) {
             mapItem = MapItem.create(serverLevel, pos.getX(), pos.getZ(), (byte) 2, true, true);
@@ -47,8 +46,7 @@ public class ModVillagerTrades {
             MapItem.getSavedData(mapItem, serverLevel).addTargetDecoration(mapItem, pos, "+", icon);
             mapItem.setHoverName(Component.translatable(translationKey));
         } else {
-            mapItem = new ItemStack(Items.PAPER);
-            mapItem.setHoverName(Component.literal("Map (Not Found nearby)"));
+            return null;
         }
 
         return new MerchantOffer(

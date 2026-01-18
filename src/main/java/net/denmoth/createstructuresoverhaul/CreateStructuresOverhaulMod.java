@@ -3,7 +3,6 @@ package net.denmoth.createstructuresoverhaul;
 import com.mojang.logging.LogUtils;
 import net.denmoth.createstructuresoverhaul.commands.ModCommands;
 import net.denmoth.createstructuresoverhaul.config.CSOConfig;
-import net.denmoth.createstructuresoverhaul.datagen.DataGenerators;
 import net.denmoth.createstructuresoverhaul.worldgen.ModPlacementTypes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
@@ -24,8 +23,8 @@ public class CreateStructuresOverhaulMod {
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CSOConfig.COMMON_SPEC);
         ModPlacementTypes.register(modEventBus);
-        modEventBus.addListener(DataGenerators::gatherData);
 
+        MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(this::registerCommands);
     }
 

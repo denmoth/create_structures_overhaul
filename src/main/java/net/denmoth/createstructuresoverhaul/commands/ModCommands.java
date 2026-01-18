@@ -1,12 +1,10 @@
 package net.denmoth.createstructuresoverhaul.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import net.denmoth.createstructuresoverhaul.CreateStructuresOverhaulMod;
-import net.denmoth.createstructuresoverhaul.datagen.ModStructures;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
@@ -28,8 +26,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.levelgen.structure.Structure;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class ModCommands {
@@ -76,47 +73,33 @@ public class ModCommands {
         ServerLevel level = source.getLevel();
         BlockPos pos = BlockPos.containing(source.getPosition());
 
-        source.sendSuccess(() -> Component.literal("§6[CSO] Scanning for structures (Radius 100 chunks)..."), false);
+        source.sendSuccess(() -> Component.literal("§6[CSO] Scanning for structures (Radius 50 chunks)..."), false);
 
-        ResourceKey<Structure>[] structures = new ResourceKey[]{
-                ModStructures.OAK_WINDMILL, ModStructures.BIRCH_WINDMILL, ModStructures.SPRUCE_WINDMILL,
-                ModStructures.ACACIA_WINDMILL, ModStructures.CHERRY_WINDMILL,
-                ModStructures.TOWER, ModStructures.GRAVEYARD,
-                ModStructures.DARK_SPOOKY_HOUSE, ModStructures.SPOOKY_HOUSE_1, ModStructures.SPOOKY_HOUSE_2,
-                ModStructures.NETHER_FORPOST, ModStructures.WARPED_GREENHOUSE,
-                ModStructures.CAMP, ModStructures.MINER_HOUSE, ModStructures.LIGHTNING_ROD_TOWER,
-                ModStructures.COPPER_GREENHOUSE, ModStructures.COPPER_STORAGE
-        };
+        var registry = level.registryAccess().registryOrThrow(Registries.STRUCTURE);
 
-        for (ResourceKey<Structure> key : structures) {
-            try {
-                Optional<Holder.Reference<Structure>> structHolder = level.registryAccess().registryOrThrow(Registries.STRUCTURE).getHolder(key);
-
-                if (structHolder.isPresent()) {
-                    var pair = level.getChunkSource().getGenerator().findNearestMapStructure(level, HolderSet.direct(structHolder.get()), pos, 100, false);
-
-                    if (pair != null) {
-                        BlockPos p = pair.getFirst();
-                        double dist = Math.sqrt(p.distSqr(pos));
-
-                        String cmd = "/tp @s " + p.getX() + " " + p.getY() + " " + p.getZ();
-
-                        Component coords = Component.literal("§e[" + p.getX() + ", " + p.getZ() + "]")
-                                .withStyle(Style.EMPTY
-                                        .withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, cmd))
-                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("Click to suggest TP command")))
-                                        .withUnderlined(true));
-
-                        source.sendSuccess(() -> Component.literal("§aFound " + key.location().getPath() + " (" + (int)dist + "m): ").append(coords), false);
-                    } else {
-                        source.sendSuccess(() -> Component.literal("§cMissing " + key.location().getPath()), false);
+        registry.entrySet().stream()
+                .filter(entry -> entry.getKey().location().getNamespace().equals(CreateStructuresOverhaulMod.MODID))
+                .forEach(entry -> {
+                    ResourceKey<Structure> key = entry.getKey();
+                    Structure structure = entry.getValue();
+                    try {
+                        var pair = level.getChunkSource().getGenerator().findNearestMapStructure(level, HolderSet.direct(Holder.direct(structure)), pos, 50, false);
+                        if (pair != null) {
+                            BlockPos p = pair.getFirst();
+                            double dist = Math.sqrt(p.distSqr(pos));
+                            String cmd = "/tp @s " + p.getX() + " " + p.getY() + " " + p.getZ();
+                            Component coords = Component.literal("§e[" + p.getX() + ", " + p.getZ() + "]")
+                                    .withStyle(Style.EMPTY
+                                            .withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, cmd))
+                                            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("Click to suggest TP command")))
+                                            .withUnderlined(true));
+                            source.sendSuccess(() -> Component.literal("§aFound " + key.location().getPath() + " (" + (int)dist + "m): ").append(coords), false);
+                        }
+                    } catch (Exception e) {
+                        source.sendSuccess(() -> Component.literal("§4Error scanning " + key.location() + ": " + e.getMessage()), false);
                     }
-                }
+                });
 
-            } catch (Exception e) {
-                source.sendSuccess(() -> Component.literal("§4Error: " + e.getMessage()), false);
-            }
-        }
         return 1;
     }
 
@@ -125,30 +108,29 @@ public class ModCommands {
         ServerLevel level = source.getLevel();
         BlockPos startPos = BlockPos.containing(source.getPosition());
 
-        String[] lootTables = {
-                "oak_windmill", "birch_windmill", "spruce_windmill", "acacia_windmill", "cherry_windmill",
-                "dark_spooky_house", "graveyard", "spooky_house1", "spooky_house2", "tower",
-                "nether_forpost", "warped_greenhouse", "camp", "copper_greenhouse", "copper_storage",
-                "lightning_tower", "miner_house"
-        };
-
+        var structureRegistry = level.registryAccess().registryOrThrow(Registries.STRUCTURE);
         int offset = 0;
-        for (String table : lootTables) {
+
+        for (Map.Entry<ResourceKey<Structure>, Structure> entry : structureRegistry.entrySet()) {
+            if (!entry.getKey().location().getNamespace().equals(CreateStructuresOverhaulMod.MODID)) continue;
+
+            String path = entry.getKey().location().getPath();
             BlockPos chestPos = startPos.offset(offset * 2, 0, 0);
 
-            level.setBlock(chestPos, Blocks.CHEST.defaultBlockState(), 3);
+            if (level.getBlockState(chestPos).isAir()) {
+                level.setBlock(chestPos, Blocks.CHEST.defaultBlockState(), 3);
 
-            if (level.getBlockEntity(chestPos) instanceof RandomizableContainerBlockEntity chest) {
-                ResourceLocation lootTableLoc = new ResourceLocation(CreateStructuresOverhaulMod.MODID, table);
-                chest.setLootTable(lootTableLoc, level.getRandom().nextLong());
-                chest.setCustomName(Component.literal("§6Loot: " + table));
+                if (level.getBlockEntity(chestPos) instanceof RandomizableContainerBlockEntity chest) {
+                    ResourceLocation lootTableLoc = new ResourceLocation(CreateStructuresOverhaulMod.MODID, path);
+                    chest.setLootTable(lootTableLoc, level.getRandom().nextLong());
+                    chest.setCustomName(Component.literal("§6Loot: " + path));
+                    offset++;
+                }
             }
-
-            offset++;
         }
 
         int finalOffset = offset;
-        source.sendSuccess(() -> Component.literal("§6Generated " + finalOffset + " named chests. Hover over them to see the table."), false);
+        source.sendSuccess(() -> Component.literal("§6Generated " + finalOffset + " chests for known structures."), false);
         return 1;
     }
 
@@ -166,14 +148,12 @@ public class ModCommands {
         HolderSet<Biome> biomes = structure.biomes();
 
         context.getSource().sendSuccess(() -> Component.literal("§6Biomes for " + id + ":"), false);
-
         biomes.stream().forEach(holder -> {
             ResourceKey<Biome> key = holder.unwrapKey().orElse(null);
             if (key != null) {
                 context.getSource().sendSuccess(() -> Component.literal(" - §a" + key.location()), false);
             }
         });
-
         return 1;
     }
 
@@ -189,7 +169,6 @@ public class ModCommands {
         }
 
         Holder<Biome> biomeHolder = biomeRegistry.getHolder(ResourceKey.create(Registries.BIOME, biomeId)).orElseThrow();
-
         context.getSource().sendSuccess(() -> Component.literal("§6CSO Structures valid in " + biomeId + ":"), false);
 
         structureRegistry.entrySet().stream()
@@ -199,7 +178,6 @@ public class ModCommands {
                         context.getSource().sendSuccess(() -> Component.literal(" - §a" + entry.getKey().location()), false);
                     }
                 });
-
         return 1;
     }
 }

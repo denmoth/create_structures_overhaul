@@ -1,6 +1,7 @@
 package net.denmoth.createstructuresoverhaul.datagen;
 
 import net.denmoth.createstructuresoverhaul.CreateStructuresOverhaulMod;
+import net.denmoth.createstructuresoverhaul.worldgen.ModStructures; // ВАЖНЫЙ ИМПОРТ
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.StructureTagsProvider;
@@ -17,7 +18,6 @@ public class ModStructureTagsProvider extends StructureTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        // Добавляем структуры в теги, чтобы их мог найти житель (MapItem)
         tag(ModTags.SPOOKY_LOCATIONS)
                 .add(ModStructures.DARK_SPOOKY_HOUSE)
                 .add(ModStructures.GRAVEYARD)
@@ -26,9 +26,7 @@ public class ModStructureTagsProvider extends StructureTagsProvider {
                 .add(ModStructures.TOWER);
 
         tag(ModTags.NETHER_COMPLEX)
-                .add(ModStructures.NETHER_FORPOST) // Теперь это Overworld структура, но тег может называться как угодно
+                .add(ModStructures.NETHER_FORPOST)
                 .add(ModStructures.WARPED_GREENHOUSE);
-
-        // Также полезно добавить их в общий тег "Все структуры мода" если понадобится
     }
 }
