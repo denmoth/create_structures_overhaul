@@ -1,12 +1,5 @@
 # Create: Structures Overhaul
 
-**Last Update:**
-
-*   **Version:** 1.3.0 & 1.3.1 – Spooky Update & Bug Fixes
-*   **Date:** 2025-10-24 - 2025-10-25
-*   **Highlights:** Added five new Halloween-themed structures; improved loot balance across most structures; increased generation rates; fixed loot in towers; fixed graveyard spawn.
-*   **Status:** Full bug-fixed release
-
 **Create: Structures Overhaul** is a world generation expansion for **Create**, adding new structures and enhancing exploration. It integrates seamlessly with Create’s mechanics to enrich your worlds with immersive, biome-themed content.
 
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-Support_Me-29ABE0?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/denmoth) [![Join Discord](https://img.shields.io/badge/Discord-Join_Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/BCXqNfPnSh) [![GitHub](https://img.shields.io/badge/GitHub-Source_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Denmoth/CubeUI) [![Wiki](https://img.shields.io/badge/Wiki-Documentation-4682B4?style=for-the-badge&logo=readthedocs&logoColor=white)](https://denmoth.pp.ua/cso/?utm_source=curseforge&utm_medium=referral&utm_campaign=curseforge_cso)
