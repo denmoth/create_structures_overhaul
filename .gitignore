@@ -18,6 +18,9 @@ build
 .gradle
 src/generated
 
+prism.local.properties
+.gradle-jdk-home
+
 # other
 eclipse
 run

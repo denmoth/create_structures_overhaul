@@ -85,6 +85,14 @@ done
 APP_BASE_NAME=${0##*/}
 APP_HOME=$( cd "${APP_HOME:-./}" && pwd -P ) || exit
 
+if [ -r "$APP_HOME/.gradle-jdk-home" ]; then
+    IFS= read -r _CSO_JDK < "$APP_HOME/.gradle-jdk-home" || true
+    if [ -n "$_CSO_JDK" ] && [ -x "$_CSO_JDK/bin/java" ]; then
+        JAVA_HOME=$_CSO_JDK
+        export JAVA_HOME
+    fi
+fi
+
 # Use the maximum available, or set MAX_FD != -1 to use that value.
 MAX_FD=maximum
 
