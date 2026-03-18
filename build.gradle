@@ -119,24 +119,101 @@ tasks.named('jar') {
     finalizedBy 'reobfJar'
 }
 
-tasks.register('runInPrism', Exec) {
-    dependsOn tasks.jar
-    group = "execution"
-
-    def prismExe = project.hasProperty('global_prism_exe') ? project.property('global_prism_exe') : null
-    def instancesDir = project.hasProperty('global_prism_instances_path') ? project.property('global_prism_instances_path') : null
-    def instanceName = project.hasProperty('prism_instance_name') ? project.property('prism_instance_name') : null
-    def targetModId = project.hasProperty('mod_id') ? project.property('mod_id') : "examplemod"
-
-    doFirst {
-        if (!prismExe || !instancesDir || !instanceName) {
-            throw new GradleException("Missing properties! Check global .gradle/gradle.properties")
-        }
-        def modsDir = file("${instancesDir}/${instanceName}/minecraft/mods")
-        if (!modsDir.exists()) throw new GradleException("Mods directory not found: ${modsDir}")
-
-        fileTree(dir: modsDir, include: "${targetModId}-*.jar").each { delete it }
-        copy { from tasks.jar.archiveFile; into modsDir }
+def loadPrismLocalProperties() {
+    def p = new Properties()
+    def f = rootProject.file('prism.local.properties')
+    if (f.exists()) {
+        f.withInputStream { p.load(new InputStreamReader(it, java.nio.charset.StandardCharsets.UTF_8)) }
     }
-    commandLine prismExe, "--launch", instanceName
+    p
+}
+
+def prismFindDev1201InstanceId = { File instancesRoot ->
+    if (!instancesRoot.isDirectory()) return null
+    String found = null
+    instancesRoot.eachDir { File dir ->
+        if (found != null) return
+        def cfg = new File(dir, 'instance.cfg')
+        def display = ''
+        if (cfg.isFile()) {
+            cfg.eachLine('UTF-8') { line ->
+                if (line.startsWith('name=')) display = line.substring(5).trim()
+            }
+        }
+        def hay = (display + ' ' + dir.name).toLowerCase(java.util.Locale.ROOT)
+        if (hay.contains('dev') && hay.contains('1.20.1')) {
+            found = dir.name
+        }
+    }
+    found
+}
+
+def resolvePrism = {
+    def local = loadPrismLocalProperties()
+    def p = { String k -> local.getProperty(k) ?: project.findProperty(k)?.toString() }
+    def isLinux = System.getProperty('os.name', '').toLowerCase(java.util.Locale.ROOT).contains('linux')
+    def isWin = System.getProperty('os.name', '').toLowerCase(java.util.Locale.ROOT).contains('win')
+    def instancesDir = p('prism_instances_path') ?: p('global_prism_instances_path')
+    if (!instancesDir) {
+        if (isLinux) {
+            instancesDir = "${System.getProperty('user.home')}/.local/share/PrismLauncher/instances"
+        } else if (isWin) {
+            def ad = System.getenv('APPDATA')
+            instancesDir = ad ? "${ad}/PrismLauncher/instances" : null
+        }
+    }
+    if (!instancesDir) {
+        throw new GradleException('Set prism_instances_path or global_prism_instances_path')
+    }
+    def instanceId = p('prism_instance_id') ?: p('prism_instance_name')
+    if (!instanceId) {
+        instanceId = prismFindDev1201InstanceId(file(instancesDir))
+    }
+    if (!instanceId) {
+        throw new GradleException("No prism_instance_id and no dev+1.20.1 instance under ${instancesDir}")
+    }
+    def prismExe = p('prism_exe') ?: p('global_prism_exe')
+    def useFlatpak = 'true'.equalsIgnoreCase(p('prism_flatpak'))
+    if (isLinux && !prismExe && !useFlatpak) {
+        prismExe = 'prismlauncher'
+    }
+    def targetModId = project.findProperty('mod_id')?.toString() ?: 'examplemod'
+    def modsDir = file("${instancesDir}/${instanceId}/minecraft/mods")
+    [
+        instanceId    : instanceId,
+        modsDir       : modsDir,
+        prismExe      : prismExe,
+        useFlatpak    : useFlatpak,
+        isLinux       : isLinux,
+        targetModId   : targetModId
+    ]
+}
+
+tasks.register('copyJarToPrism') {
+    dependsOn tasks.jar
+    group = 'execution'
+    doLast {
+        def r = resolvePrism()
+        if (!r.modsDir.exists()) {
+            throw new GradleException("Mods dir missing: ${r.modsDir}")
+        }
+        fileTree(dir: r.modsDir, include: "${r.targetModId}-*.jar").each { delete it }
+        copy { from tasks.jar.archiveFile; into r.modsDir }
+    }
+}
+
+tasks.register('runInPrism', Exec) {
+    dependsOn tasks.named('copyJarToPrism')
+    group = 'execution'
+    doFirst {
+        def r = resolvePrism()
+        if (!r.prismExe && !r.useFlatpak) {
+            throw new GradleException('prism_exe / global_prism_exe or prism_flatpak=true')
+        }
+        if (r.isLinux && r.useFlatpak) {
+            setCommandLine('flatpak', 'run', 'org.prismlauncher.PrismLauncher', '--launch', r.instanceId)
+        } else {
+            setCommandLine(r.prismExe, '--launch', r.instanceId)
+        }
+    }
 }
