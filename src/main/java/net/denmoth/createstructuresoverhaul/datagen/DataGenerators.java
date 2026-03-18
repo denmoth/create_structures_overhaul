@@ -26,8 +26,6 @@ public class DataGenerators {
         ModWorldGenProvider worldGen = new ModWorldGenProvider(packOutput, lookupProvider);
         generator.addProvider(event.includeServer(), worldGen);
 
-        generator.addProvider(event.includeServer(), new ModStructureTagsProvider(packOutput, worldGen.getRegistryProvider(), existingFileHelper));
-
         generator.addProvider(event.includeServer(), ModLootTableProvider.create(packOutput));
 
         // ИСПРАВЛЕНО ЗДЕСЬ: Просто вызываем твой класс напрямую

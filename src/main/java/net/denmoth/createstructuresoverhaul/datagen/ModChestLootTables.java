@@ -75,7 +75,6 @@ public class ModChestLootTables implements LootTableSubProvider {
         writer.accept(new ResourceLocation(MODID, "tower"), LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(2, 4))
                         .add(LootItem.lootTableItem(Items.PAPER).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 8))))
-                        .add(LootItem.lootTableItem(Items.MAP).setWeight(10))
                         .add(LootItem.lootTableItem(Items.SPYGLASS).setWeight(5))
                         .add(LootItem.lootTableItem(req("goggles")).setWeight(8))
                         .add(LootItem.lootTableItem(req("precision_mechanism")).setWeight(3).setQuality(5))

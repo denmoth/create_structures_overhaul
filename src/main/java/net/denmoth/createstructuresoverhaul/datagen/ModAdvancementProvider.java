@@ -146,23 +146,6 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, new ResourceLocation(CreateStructuresOverhaulMod.MODID, "find_all_industrial"), existingFileHelper);
 
             // ================= OTHERS =================
-            // TRADING
-            Advancement trading = Advancement.Builder.advancement()
-                    .parent(root)
-                    .display(
-                            Items.FILLED_MAP,
-                            Component.translatable("advancements.cso.trading.title"),
-                            Component.translatable("advancements.cso.trading.desc"),
-                            null, FrameType.TASK, true, true, false
-                    )
-                    .requirements(RequirementsStrategy.OR)
-                    .addCriterion("buy_map", new TradeTrigger.TriggerInstance(
-                            ContextAwarePredicate.ANY,
-                            ContextAwarePredicate.ANY,
-                            ItemPredicate.Builder.item().of(Items.FILLED_MAP).build()
-                    ))
-                    .save(saver, new ResourceLocation(CreateStructuresOverhaulMod.MODID, "trading"), existingFileHelper);
-
             // NETHER: Any
             Advancement nether = Advancement.Builder.advancement()
                     .parent(industrialAny) // Ответвление от индустрии
