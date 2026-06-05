@@ -1,0 +1,17 @@
+plugins {
+    id 'fabric-loom' version '0.12-SNAPSHOT'
+}
+
+base {
+    archivesName = "${rootProject.property('mod_id')}-common"
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.20.1"
+    mappings loom.officialMojangMappings()
+    implementation("curse.maven:create-328085:6247663")
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}

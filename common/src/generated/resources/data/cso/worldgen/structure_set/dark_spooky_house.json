@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "mothlib:configurable",
+    "config_id": "cso_spooky",
+    "salt": 543607576,
+    "separation": 6,
+    "spacing": 20
+  },
+  "structures": [
+    {
+      "structure": "cso:dark_spooky_house",
+      "weight": 1
+    }
+  ]
+}

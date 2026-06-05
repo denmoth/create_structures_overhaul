@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "mothlib:configurable",
+    "config_id": "cso_overworld_misc",
+    "salt": 423359639,
+    "separation": 6,
+    "spacing": 20
+  },
+  "structures": [
+    {
+      "structure": "cso:camp",
+      "weight": 1
+    }
+  ]
+}

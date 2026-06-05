@@ -1,0 +1,13 @@
+{
+  "processors": [
+    {
+      "processor_type": "mothlib:random_wheat"
+    },
+    {
+      "processor_type": "mothlib:windmill_bearing"
+    },
+    {
+      "processor_type": "mothlib:terrain_match"
+    }
+  ]
+}

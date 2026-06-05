@@ -1,0 +1,146 @@
+plugins {
+    id 'fabric-loom' version '0.12-SNAPSHOT'
+}
+
+base {
+    archivesName = "${rootProject.property('mod_id')}-fabric"
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.20.1"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:0.15.11"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.92.2+1.20.1"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['../common/src/main/java', 'src/main/java']
+            exclude 'net/denmoth/createstructuresoverhaul/datagen/DataGenerators.java'
+            exclude 'net/denmoth/createstructuresoverhaul/datagen/ModAdvancementProvider.java'
+            exclude 'net/denmoth/createstructuresoverhaul/datagen/ModChestLootTables.java'
+            exclude 'net/denmoth/createstructuresoverhaul/datagen/ModLanguageProvider.java'
+            exclude 'net/denmoth/createstructuresoverhaul/datagen/ModLootTableProvider.java'
+            exclude 'net/denmoth/createstructuresoverhaul/datagen/ModLootTables.java'
+            exclude 'net/denmoth/createstructuresoverhaul/datagen/ModWorldGenProvider.java'
+            exclude 'net/denmoth/createstructuresoverhaul/forge/**'
+        }
+        resources {
+            srcDirs = ['../common/src/main/resources', '../common/src/generated/resources', 'src/main/resources']
+            exclude 'META-INF/mods.toml'
+        }
+    }
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    def replaceProperties = [
+            mod_id         : rootProject.property('mod_id'),
+            mod_name       : 'Create: Structures Overhaul',
+            mod_version    : rootProject.property('mod_version'),
+            mod_description: 'Overhauls exploration by adding immersive, Create-themed structures to the world.',
+            mod_authors    : 'Denmoth'
+    ]
+    inputs.properties replaceProperties
+    filesMatching('fabric.mod.json') {
+        expand replaceProperties
+    }
+}
+
+def loadPrismLocalProperties() {
+    def p = new Properties()
+    def f = rootProject.file('prism.local.properties')
+    if (f.exists()) {
+        f.withInputStream { p.load(new InputStreamReader(it, java.nio.charset.StandardCharsets.UTF_8)) }
+    }
+    p
+}
+
+def prismFindDev1201InstanceId = { File instancesRoot, String targetName ->
+    if (!instancesRoot.isDirectory()) return null
+    String found = null
+    instancesRoot.eachDir { File dir ->
+        if (found != null) return
+        def cfg = new File(dir, 'instance.cfg')
+        def display = ''
+        if (cfg.isFile()) {
+            cfg.eachLine('UTF-8') { line ->
+                if (line.startsWith('name=')) display = line.substring(5).trim()
+            }
+        }
+        if (display.equalsIgnoreCase(targetName) || dir.name.equalsIgnoreCase(targetName)) {
+            found = dir.name
+        }
+    }
+    found
+}
+
+def resolvePrism = { String loaderName ->
+    def local = loadPrismLocalProperties()
+    def p = { String k -> local.getProperty(k) ?: project.findProperty(k)?.toString() ?: rootProject.findProperty(k)?.toString() }
+    def isLinux = System.getProperty('os.name', '').toLowerCase(java.util.Locale.ROOT).contains('linux')
+    def isWin = System.getProperty('os.name', '').toLowerCase(java.util.Locale.ROOT).contains('win')
+    def instancesDir = p('prism_instances_path') ?: p('global_prism_instances_path')
+    if (!instancesDir) {
+        if (isLinux) {
+            instancesDir = "${System.getProperty('user.home')}/.local/share/PrismLauncher/instances"
+        } else if (isWin) {
+            def ad = System.getenv('APPDATA')
+            instancesDir = ad ? "${ad}/PrismLauncher/instances" : null
+        }
+    }
+    if (!instancesDir) {
+        throw new GradleException('Set prism_instances_path or global_prism_instances_path')
+    }
+    def instanceId = p('prism_instance_id') ?: p('prism_instance_name')
+    if (!instanceId) {
+        instanceId = prismFindDev1201InstanceId(file(instancesDir), "Dev 1.20.1 ${loaderName}")
+    }
+    if (!instanceId) {
+        throw new GradleException("No prism_instance_id and no 'Dev 1.20.1 ${loaderName}' instance under ${instancesDir}")
+    }
+    def prismExe = p('prism_exe') ?: p('global_prism_exe')
+    def useFlatpak = 'true'.equalsIgnoreCase(p('prism_flatpak'))
+    if (isLinux && !prismExe && !useFlatpak) {
+        prismExe = 'prismlauncher'
+    }
+    def targetModId = rootProject.findProperty('mod_id')?.toString() ?: 'examplemod'
+    def modsDir = file("${instancesDir}/${instanceId}/minecraft/mods")
+    [
+            instanceId  : instanceId,
+            modsDir     : modsDir,
+            prismExe    : prismExe,
+            useFlatpak  : useFlatpak,
+            isLinux     : isLinux,
+            targetModId : targetModId
+    ]
+}
+
+tasks.register('copyJarToPrism') {
+    dependsOn tasks.jar
+    group = 'execution'
+    doLast {
+        def r = resolvePrism('fabric')
+        if (!r.modsDir.exists()) {
+            throw new GradleException("Mods dir missing: ${r.modsDir}")
+        }
+        fileTree(dir: r.modsDir, include: "${r.targetModId}-*.jar").each { delete it }
+        copy { from tasks.jar.archiveFile; into r.modsDir }
+    }
+}
+
+tasks.register('runInPrism', Exec) {
+    dependsOn tasks.named('copyJarToPrism')
+    group = 'execution'
+    doFirst {
+        def r = resolvePrism('fabric')
+        if (!r.prismExe && !r.useFlatpak) {
+            throw new GradleException('prism_exe / global_prism_exe or prism_flatpak=true')
+        }
+        if (r.isLinux && r.useFlatpak) {
+            setCommandLine('flatpak', 'run', 'org.prismlauncher.PrismLauncher', '--launch', r.instanceId)
+        } else {
+            setCommandLine(r.prismExe, '--launch', r.instanceId)
+        }
+    }
+}

@@ -1,0 +1,17 @@
+// 1.20.1	2026-06-05T13:22:30.7974335	Loot Tables
+6a5b1c74dc9e4fe88e165cb9b3dd8f3df43a419a data/cso/loot_tables/acacia_windmill.json
+61200bfae11ab0d5f4343171c80cc82bc23e99f9 data/cso/loot_tables/birch_windmill.json
+f4940ff166d9d4438b0b8401810c510149026352 data/cso/loot_tables/camp.json
+76cc44000faabbcf256ba92be1c0f6e99e05ba08 data/cso/loot_tables/cherry_windmill.json
+0c56775f41395b0fc6df35a07fc7b68d5e1f85af data/cso/loot_tables/dark_spooky_house.json
+e4296188a795bec93911b906c5a7c14021e7e3d5 data/cso/loot_tables/graveyard.json
+6849c6c90d2fd7dcea269acc0447fa4111263413 data/cso/loot_tables/greenhouse.json
+2d92a7c95c1c8847dc98ec4436b228f78ebd185c data/cso/loot_tables/lightning_rod_tower.json
+b583d6767303f76b03da6286ae3e7fbae3839671 data/cso/loot_tables/miner_hut.json
+8f2d632c88ab9eb70370c2fb75eaabc64a719511 data/cso/loot_tables/nether_forpost.json
+1dd2badbf77a665078037ebbf8736976e5a5de09 data/cso/loot_tables/oak_windmill.json
+a178306e9c857998a3f72ffdf1970cea8aece5a3 data/cso/loot_tables/spooky_house1.json
+7b04a122db023af0f6c8736e505f2020caf4d768 data/cso/loot_tables/spooky_house2.json
+2fca554598c04e184263e84be1bf87d128bb0fb8 data/cso/loot_tables/spruce_windmill.json
+87ac641d28edecf23ae0e1bf144bb084f1114efa data/cso/loot_tables/tower.json
+7096e799ac804080247a8b6dde969fccc5fd437c data/cso/loot_tables/warped_greenhouse.json

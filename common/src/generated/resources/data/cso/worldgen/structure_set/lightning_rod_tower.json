@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "mothlib:configurable",
+    "config_id": "cso_overworld",
+    "salt": 893135760,
+    "separation": 8,
+    "spacing": 24
+  },
+  "structures": [
+    {
+      "structure": "cso:lightning_rod_tower",
+      "weight": 1
+    }
+  ]
+}
