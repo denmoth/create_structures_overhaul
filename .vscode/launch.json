@@ -1,0 +1,53 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "neoforge-1.20 - Client",
+      "presentation": {
+        "group": "Mod Development - neoforge-1.20",
+        "order": 0
+      },
+      "projectName": "neoforge-1.20",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\lin\\Projects\\MC\\CSO\\neoforge-1.20\\build\\moddev\\clientRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\lin\\Projects\\MC\\CSO\\neoforge-1.20\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcso%%D:\\lin\\Projects\\MC\\CSO\\neoforge-1.20\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\neoforge-1.20\\run",
+      "env": {
+        "MOD_CLASSES": "cso%%D:\\lin\\Projects\\MC\\CSO\\neoforge-1.20\\bin\\main"
+      },
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "neoforge-1.20 - Server",
+      "presentation": {
+        "group": "Mod Development - neoforge-1.20",
+        "order": 1
+      },
+      "projectName": "neoforge-1.20",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\lin\\Projects\\MC\\CSO\\neoforge-1.20\\build\\moddev\\serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\lin\\Projects\\MC\\CSO\\neoforge-1.20\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcso%%D:\\lin\\Projects\\MC\\CSO\\neoforge-1.20\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\neoforge-1.20\\run",
+      "env": {
+        "MOD_CLASSES": "cso%%D:\\lin\\Projects\\MC\\CSO\\neoforge-1.20\\bin\\main"
+      },
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'dev.architectury.loom' version '1.7-SNAPSHOT'
+}
+
+version = "3.0.0"
+group = "net.denmoth.createstructuresoverhaul"
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url = 'https://maven.neoforged.net/releases/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.21.1"
+    mappings loom.officialMojangMappings()
+
+    neoForge "net.neoforged:neoforge:21.1.10"
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    def expandProps = [
+        "mod_id": "cso",
+        "mod_version": "3.0.0",
+        "mod_name": "Create: Structures Overhaul",
+        "mod_license": "MIT",
+        "mod_authors": "Denmoth",
+        "mod_description": "Overhauls exploration by adding immersive, Create-themed structures to the world.",
+        "loader_version_range": "[47,)",
+        "minecraft_version_range": "[1.21.1]",
+        "forge_version_range": "[47,)",
+        "neoforge_version_range": "[21.1,)"
+    ]
+    inputs.properties expandProps
+    filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml', 'pack.mcmeta']) {
+        expand expandProps
+    }
+}
+
+jar {
+    exclude 'net/minecraftforge/**'
+    exclude 'net/neoforged/**'
+}

@@ -1,0 +1,1 @@
+package net.minecraftforge.event; public class AddPackFindersEvent { public net.minecraft.server.packs.PackType getPackType() { return null; } public void addRepositorySource(java.util.function.Consumer<net.minecraft.server.packs.repository.RepositorySource> source) {} }

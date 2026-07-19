@@ -1,0 +1,42 @@
+{
+  "parent": "cso:root",
+  "criteria": {
+    "find_warped_greenhouse": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:warped_greenhouse"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cso.nether.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "create:blaze_burner"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cso.nether.title"
+    }
+  },
+  "requirements": [
+    [
+      "find_warped_greenhouse"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
