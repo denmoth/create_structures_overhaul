@@ -10,12 +10,6 @@
     "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "biomes": [
-    "dark_forest",
-    "swamp",
-    "taiga",
-    "snowy_taiga",
-    "mushroom_fields"
-  ],
+  "biomes": "#create_structures_overhaul:dark_spooky_house_biomes",
   "use_expansion_hack": false
 }

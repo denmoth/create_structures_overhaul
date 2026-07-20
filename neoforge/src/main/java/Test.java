@@ -1,1 +1,0 @@
-﻿package net.denmoth.createstructuresoverhaul; import net.neoforged.neoforge.registries.DeferredRegister; import net.minecraft.core.registries.Registries; import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType; class Test { DeferredRegister<StructureProcessorType<?>> PROCESSORS = DeferredRegister.create(Registries.STRUCTURE_PROCESSOR, "cso"); }

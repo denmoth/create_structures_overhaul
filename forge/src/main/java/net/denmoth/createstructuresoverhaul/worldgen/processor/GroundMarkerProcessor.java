@@ -23,6 +23,6 @@ public class GroundMarkerProcessor extends StructureProcessor {
 
     @Override
     protected StructureProcessorType<?> getType() {
-        return net.denmoth.createstructuresoverhaul.CSOMain.GROUND_MARKER;
+        return net.denmoth.createstructuresoverhaul.CSOMain.GROUND_MARKER.get();
     }
 }

@@ -10,10 +10,6 @@
     "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "biomes": [
-    "forest",
-    "flower_forest",
-    "plains"
-  ],
+  "biomes": "#minecraft:has_structure/village_plains",
   "use_expansion_hack": false
 }

@@ -153,6 +153,6 @@ public class SolidGroundMarkerProcessor extends StructureProcessor {
 
     @Override
     protected StructureProcessorType<?> getType() {
-        return net.denmoth.createstructuresoverhaul.CSOMain.SOLID_GROUND_MARKER;
+        return net.denmoth.createstructuresoverhaul.CSOMain.SOLID_GROUND_MARKER.get();
     }
 }

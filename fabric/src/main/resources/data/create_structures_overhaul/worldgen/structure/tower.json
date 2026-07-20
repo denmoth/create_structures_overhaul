@@ -10,11 +10,6 @@
     "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-"biomes": [
-  "minecraft:dark_forest",
-  "minecraft:swamp",
-  "minecraft:old_growth_spruce_taiga",
-  "minecraft:flower_forest"
-],
+  "biomes": "#create_structures_overhaul:tower_biomes",
   "use_expansion_hack": false
 }

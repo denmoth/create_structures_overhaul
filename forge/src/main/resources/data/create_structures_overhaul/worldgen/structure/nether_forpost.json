@@ -10,12 +10,6 @@
     "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "biomes": [
-  "minecraft:savanna",
-  "minecraft:savanna_plateau",
-  "minecraft:windswept_savanna",
-  "minecraft:windswept_hills",
-  "minecraft:windswept_gravelly_hills"
-  ],
+  "biomes": "#create_structures_overhaul:nether_forpost_biomes",
   "use_expansion_hack": false
 }

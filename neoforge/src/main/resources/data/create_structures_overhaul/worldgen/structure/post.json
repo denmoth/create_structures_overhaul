@@ -10,12 +10,6 @@
     "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-"biomes": [
-  "minecraft:plains",
-  "minecraft:forest",
-  "minecraft:birch_forest",
-  "minecraft:taiga",
-  "minecraft:savanna"
-],
+  "biomes": "#create_structures_overhaul:post_biomes",
   "use_expansion_hack": false
 }

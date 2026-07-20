@@ -10,12 +10,6 @@
     "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "biomes": [
-    "swamp",
-    "dark_forest",
-    "plains",
-    "taiga",
-    "flower_forest"
-  ],
+  "biomes": "#create_structures_overhaul:graveyard_biomes",
   "use_expansion_hack": false
 }

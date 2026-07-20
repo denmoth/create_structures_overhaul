@@ -10,12 +10,6 @@
     "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "biomes": [
-    "dark_forest",
-    "taiga",
-    "savanna_plateau",
-    "plains",
-    "snowy_taiga"
-  ],
+  "biomes": "#create_structures_overhaul:spooky_house2_biomes",
   "use_expansion_hack": false
 }

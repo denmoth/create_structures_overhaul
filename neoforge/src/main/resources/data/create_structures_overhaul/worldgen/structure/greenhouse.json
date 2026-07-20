@@ -10,20 +10,6 @@
     "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "biomes": [
-    "plains",
-    "snowy_plains",
-    "sunflower_plains",
-    "birch_forest",
-    "cherry_grove",
-    "savanna",
-    "savanna_plateau",
-    "taiga",
-    "windswept_savanna",
-    "flower_forest",
-    "forest",
-    "old_growth_birch_forest",
-    "windswept_forest"
-  ],
+  "biomes": "#create_structures_overhaul:greenhouse_biomes",
   "use_expansion_hack": false
 }
