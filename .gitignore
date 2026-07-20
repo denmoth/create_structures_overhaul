@@ -40,3 +40,4 @@ cf_temp/
 *.tmp
 *.bak
 *.log
+*.py
