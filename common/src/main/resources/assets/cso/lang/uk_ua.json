@@ -23,5 +23,14 @@
   "advancements.cso.category_complete.desc": "Завершіть пошук цілої категорії будов",
   "advancements.cso.all.title": "Дослідник Оновлення",
   "advancements.cso.all.desc": "Знайдіть абсолютно кожну будову у моді",
-  "cso.config.error": "Помилка конфігу CSO: Невірний формат файлу. Використовуються стандартні значення."
+  "cso.config.error": "Помилка конфігу CSO: Невірний формат файлу. Використовуються стандартні значення.",
+  "cso.config.title": "CSO Configuration",
+  "cso.config.category.general": "General Options",
+  "cso.config.enable_all_structures": "Enable All Structures",
+  "cso.config.enable_windmills": "Enable Windmills",
+  "cso.config.enable_spooky_houses": "Enable Spooky Houses",
+  "cso.config.enable_industrial": "Enable Industrial Structures",
+  "cso.config.inject_into_villages": "Inject Into Villages",
+  "cso.config.default_spacing": "Default Spacing",
+  "cso.config.default_separation": "Default Separation"
 }

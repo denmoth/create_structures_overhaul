@@ -23,5 +23,14 @@
   "advancements.cso.category_complete.desc": "నిర్మాణాల యొక్క మొత్తం వర్గాన్ని పూర్తి చేయండి",
   "advancements.cso.all.title": "సమగ్ర పరిశీలన యొక్క అన్వేషకుడు",
   "advancements.cso.all.desc": "మోడ్‌లో ప్రతి ఒక్క నిర్మాణాన్ని కనుగొనండి",
-  "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values."
+  "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values.",
+  "cso.config.title": "CSO Configuration",
+  "cso.config.category.general": "General Options",
+  "cso.config.enable_all_structures": "Enable All Structures",
+  "cso.config.enable_windmills": "Enable Windmills",
+  "cso.config.enable_spooky_houses": "Enable Spooky Houses",
+  "cso.config.enable_industrial": "Enable Industrial Structures",
+  "cso.config.inject_into_villages": "Inject Into Villages",
+  "cso.config.default_spacing": "Default Spacing",
+  "cso.config.default_separation": "Default Separation"
 }

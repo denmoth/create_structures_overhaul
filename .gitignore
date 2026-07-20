@@ -37,7 +37,9 @@ temp/
 tmp/
 temp_*/
 cf_temp/
+# Temp Python Scripts and Downloads
+*.py
 *.tmp
 *.bak
 *.log
-*.py
+jdk17.zip

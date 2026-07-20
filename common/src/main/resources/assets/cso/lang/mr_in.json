@@ -23,5 +23,14 @@
   "advancements.cso.category_complete.desc": "संरचनेची एक संपूर्ण श्रेणी पूर्ण करा",
   "advancements.cso.all.title": "ओव्हरहॉलचे एक्सप्लोरर",
   "advancements.cso.all.desc": "मोडमधील प्रत्येक रचना शोधा",
-  "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values."
+  "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values.",
+  "cso.config.title": "CSO Configuration",
+  "cso.config.category.general": "General Options",
+  "cso.config.enable_all_structures": "Enable All Structures",
+  "cso.config.enable_windmills": "Enable Windmills",
+  "cso.config.enable_spooky_houses": "Enable Spooky Houses",
+  "cso.config.enable_industrial": "Enable Industrial Structures",
+  "cso.config.inject_into_villages": "Inject Into Villages",
+  "cso.config.default_spacing": "Default Spacing",
+  "cso.config.default_separation": "Default Separation"
 }

@@ -26,6 +26,7 @@ repositories {
     mavenCentral()
     maven { url = "https://maven.minecraftforge.net/" }
     maven { url = "https://maven.tterrag.com/" }
+    maven { url = "https://maven.shedaniel.me/" }
 }
 
 dependencies {
@@ -33,6 +34,9 @@ dependencies {
     mappings loom.officialMojangMappings()
 
     forge "net.minecraftforge:forge:1.20.1-47.1.3"
+    
+    // Optional Cloth Config API
+    modCompileOnly "me.shedaniel.cloth:cloth-config-forge:11.1.118"
 }
 
 processResources {

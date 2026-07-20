@@ -23,5 +23,14 @@
   "advancements.cso.category_complete.desc": "Completa un'intera categoria di strutture",
   "advancements.cso.all.title": "Esploratore della revisione",
   "advancements.cso.all.desc": "Trovi ogni singola struttura nel mod",
-  "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values."
+  "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values.",
+  "cso.config.title": "CSO Configuration",
+  "cso.config.category.general": "General Options",
+  "cso.config.enable_all_structures": "Enable All Structures",
+  "cso.config.enable_windmills": "Enable Windmills",
+  "cso.config.enable_spooky_houses": "Enable Spooky Houses",
+  "cso.config.enable_industrial": "Enable Industrial Structures",
+  "cso.config.inject_into_villages": "Inject Into Villages",
+  "cso.config.default_spacing": "Default Spacing",
+  "cso.config.default_separation": "Default Separation"
 }

@@ -23,5 +23,14 @@
   "advancements.cso.category_complete.desc": "Завершите поиск целой категории построек",
   "advancements.cso.all.title": "Исследователь Обновления",
   "advancements.cso.all.desc": "Найдите абсолютно каждую постройку в моде",
-  "cso.config.error": "Ошибка конфига CSO: Неверный формат файла. Используются стандартные значения."
+  "cso.config.error": "Ошибка конфига CSO: Неверный формат файла. Используются стандартные значения.",
+  "cso.config.title": "CSO Configuration",
+  "cso.config.category.general": "General Options",
+  "cso.config.enable_all_structures": "Enable All Structures",
+  "cso.config.enable_windmills": "Enable Windmills",
+  "cso.config.enable_spooky_houses": "Enable Spooky Houses",
+  "cso.config.enable_industrial": "Enable Industrial Structures",
+  "cso.config.inject_into_villages": "Inject Into Villages",
+  "cso.config.default_spacing": "Default Spacing",
+  "cso.config.default_separation": "Default Separation"
 }

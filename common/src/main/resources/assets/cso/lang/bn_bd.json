@@ -23,5 +23,14 @@
   "advancements.cso.category_complete.desc": "কাঠামোর একটি সম্পূর্ণ বিভাগ সম্পূর্ণ করুন",
   "advancements.cso.all.title": "ওভারহল এক্সপ্লোরার",
   "advancements.cso.all.desc": "মোডে প্রতিটি একক কাঠামো খুঁজুন",
-  "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values."
+  "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values.",
+  "cso.config.title": "CSO Configuration",
+  "cso.config.category.general": "General Options",
+  "cso.config.enable_all_structures": "Enable All Structures",
+  "cso.config.enable_windmills": "Enable Windmills",
+  "cso.config.enable_spooky_houses": "Enable Spooky Houses",
+  "cso.config.enable_industrial": "Enable Industrial Structures",
+  "cso.config.inject_into_villages": "Inject Into Villages",
+  "cso.config.default_spacing": "Default Spacing",
+  "cso.config.default_separation": "Default Separation"
 }

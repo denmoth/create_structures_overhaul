@@ -23,5 +23,14 @@
   "advancements.cso.category_complete.desc": "하나의 전체 구조물 카테고리를 완료하세요.",
   "advancements.cso.all.title": "정밀검사의 탐험가",
   "advancements.cso.all.desc": "모드의 모든 단일 구조를 찾아보세요",
-  "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values."
+  "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values.",
+  "cso.config.title": "CSO Configuration",
+  "cso.config.category.general": "General Options",
+  "cso.config.enable_all_structures": "Enable All Structures",
+  "cso.config.enable_windmills": "Enable Windmills",
+  "cso.config.enable_spooky_houses": "Enable Spooky Houses",
+  "cso.config.enable_industrial": "Enable Industrial Structures",
+  "cso.config.inject_into_villages": "Inject Into Villages",
+  "cso.config.default_spacing": "Default Spacing",
+  "cso.config.default_separation": "Default Separation"
 }
