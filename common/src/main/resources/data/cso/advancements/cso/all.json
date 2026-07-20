@@ -1,0 +1,332 @@
+{
+  "parent": "cso:category_complete",
+  "criteria": {
+    "find_acacia_windmill": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:windmill",
+                "biome": "#minecraft:is_savanna"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_birch_windmill": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:windmill",
+                "biome": "#minecraft:is_birch_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_camp": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:camp"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_cherry_windmill": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:windmill",
+                "biome": "minecraft:cherry_grove"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_dark_spooky_house": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:dark_spooky_house"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_graveyard": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:graveyard"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_greenhouse": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:greenhouse"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_lightning_rod_tower": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:lightning_rod_tower"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_miner_hut": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:miner_hut"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_nether_forpost": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:nether_forpost"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_oak_windmill": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:windmill",
+                "biome": "#minecraft:is_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_post": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:post"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_spooky_house1": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:spooky_house1"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_spooky_house2": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:spooky_house2"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_spruce_windmill": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:windmill",
+                "biome": "#minecraft:is_taiga"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "find_tower": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "cso:tower"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cso.all.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:spyglass"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cso.all.title"
+    }
+  },
+  "requirements": [
+    [
+      "find_oak_windmill"
+    ],
+    [
+      "find_birch_windmill"
+    ],
+    [
+      "find_spruce_windmill"
+    ],
+    [
+      "find_acacia_windmill"
+    ],
+    [
+      "find_cherry_windmill"
+    ],
+    [
+      "find_tower"
+    ],
+    [
+      "find_graveyard"
+    ],
+    [
+      "find_dark_spooky_house"
+    ],
+    [
+      "find_spooky_house1"
+    ],
+    [
+      "find_spooky_house2"
+    ],
+    [
+      "find_nether_forpost"
+    ],
+    [
+      "find_post"
+    ],
+    [
+      "find_camp"
+    ],
+    [
+      "find_miner_hut"
+    ],
+    [
+      "find_greenhouse"
+    ],
+    [
+      "find_lightning_rod_tower"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

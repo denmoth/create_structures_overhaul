@@ -13,10 +13,11 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.denmoth.createstructuresoverhaul.fabric.CreateStructuresOverhaulFabric"
+      "net.denmoth.cso.fabric.CreateStructuresOverhaulFabric"
     ]
   },
   "mixins": [
+    "cso.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.15.11",

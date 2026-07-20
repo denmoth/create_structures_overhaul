@@ -1,0 +1,75 @@
+{
+  "structures": [
+    {
+      "structure": "cso:oakwindmill",
+      "weight": 1
+    },
+    {
+      "structure": "cso:sprucewindmill",
+      "weight": 1
+    },
+    {
+      "structure": "cso:acaciawindmill",
+      "weight": 1
+    },
+    {
+      "structure": "cso:nether_forpost",
+      "weight": 1
+    },
+    {
+      "structure": "cso:cherrywindmill",
+      "weight": 1
+    },
+    {
+      "structure": "cso:birchwindmill",
+      "weight": 1
+    },
+    {
+      "structure": "cso:post",
+      "weight": 1
+    },
+    {
+      "structure": "cso:miner_hut",
+      "weight": 1
+    },
+    {
+      "structure": "cso:tower",
+      "weight": 1
+    },
+    {
+      "structure": "cso:camp",
+      "weight": 1
+    },
+    {
+      "structure": "cso:greenhouse",
+      "weight": 1
+    },
+    {
+      "structure": "cso:lightningrodtower",
+      "weight": 1
+    },
+    {
+      "structure": "cso:spooky_house1",
+      "weight": 1
+    },
+    {
+      "structure": "cso:spooky_house2",
+      "weight": 1
+    },
+    {
+      "structure": "cso:dark_spooky_house",
+      "weight": 1
+    },
+    {
+      "structure": "cso:graveyard",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 30,
+    "separation": 6,
+    "spread_type": "triangular",
+    "salt": 45141315208
+  }
+}

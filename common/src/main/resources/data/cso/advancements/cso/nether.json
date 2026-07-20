@@ -1,0 +1,21 @@
+{
+  "parent": "cso:root",
+  "criteria": {},
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cso.nether.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "create:blaze_burner"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cso.nether.title"
+    }
+  },
+  "requirements": [],
+  "sends_telemetry_event": true
+}
