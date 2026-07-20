@@ -31,3 +31,12 @@ forge*changelog.txt
 
 # local files
 local/
+
+# Temporary and script generated files
+temp/
+tmp/
+temp_*/
+cf_temp/
+*.tmp
+*.bak
+*.log
