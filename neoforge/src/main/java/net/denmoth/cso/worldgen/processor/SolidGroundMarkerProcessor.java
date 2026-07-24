@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class SolidGroundMarkerProcessor extends StructureProcessor {
-    public static final Codec<SolidGroundMarkerProcessor> CODEC = Codec.unit(SolidGroundMarkerProcessor::new);
+    public static final com.mojang.serialization.MapCodec<SolidGroundMarkerProcessor> CODEC = com.mojang.serialization.MapCodec.unit(SolidGroundMarkerProcessor::new);
 
     public SolidGroundMarkerProcessor() {}
 

@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class TerrainBlendProcessor extends StructureProcessor {
-    public static final Codec<TerrainBlendProcessor> CODEC = Codec.unit(TerrainBlendProcessor::new);
+    public static final com.mojang.serialization.MapCodec<TerrainBlendProcessor> CODEC = com.mojang.serialization.MapCodec.unit(TerrainBlendProcessor::new);
 
     public TerrainBlendProcessor() {}
 
