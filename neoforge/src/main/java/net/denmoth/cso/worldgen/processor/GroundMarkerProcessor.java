@@ -10,14 +10,13 @@ import org.jetbrains.annotations.Nullable;
 
 public class GroundMarkerProcessor extends StructureProcessor {
     public static final com.mojang.serialization.MapCodec<GroundMarkerProcessor> CODEC = com.mojang.serialization.MapCodec.unit(GroundMarkerProcessor::new);
-    public static final GroundMarkerProcessor INSTANCE = new GroundMarkerProcessor();
 
     public GroundMarkerProcessor() {}
 
     @Nullable
     @Override
-    public StructureTemplate.StructureBlockInfo processBlock(LevelReader level, BlockPos offset, BlockPos pos, StructureTemplate.StructureBlockInfo blockInfoIn, StructureTemplate.StructureBlockInfo blockInfoOut, StructurePlaceSettings settings) {
-        return null;
+    public StructureTemplate.StructureBlockInfo processBlock(LevelReader level, BlockPos offset, BlockPos pos, StructureTemplate.StructureBlockInfo blockInfoLocal, StructureTemplate.StructureBlockInfo blockInfoGlobal, StructurePlaceSettings settings) {
+        return null; // Neutered marker
     }
 
     @Override
