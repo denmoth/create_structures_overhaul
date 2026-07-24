@@ -9,37 +9,51 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import net.minecraft.world.level.block.Blocks;
+import net.denmoth.cso.CSOMain;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class SolidGroundMarkerProcessor extends StructureProcessor {
-    public static final Codec<SolidGroundMarkerProcessor> CODEC = Codec.unit(SolidGroundMarkerProcessor::new);
+public class TerrainBlendProcessor extends StructureProcessor {
+    public static final Codec<TerrainBlendProcessor> CODEC = Codec.unit(TerrainBlendProcessor::new);
 
-    public SolidGroundMarkerProcessor() {}
+    public TerrainBlendProcessor() {}
 
     @Nullable
     @Override
     public StructureTemplate.StructureBlockInfo processBlock(LevelReader level, BlockPos offset, BlockPos pos, StructureTemplate.StructureBlockInfo blockInfoLocal, StructureTemplate.StructureBlockInfo blockInfoGlobal, StructurePlaceSettings settings) {
         if (!(level instanceof WorldGenLevel worldGenLevel)) {
-            return null; // Fallback if not generating properly
+            return blockInfoGlobal;
+        }
+
+        BlockState stateOut = blockInfoGlobal.state();
+        if (stateOut.getBlock() != Blocks.GRASS_BLOCK) {
+            return blockInfoGlobal;
+        }
+        
+        // ЕСЛИ ТРАВА ВЫСОКО НЕ РЕАГИРУЙ
+        if (blockInfoLocal.pos().getY() > 2) {
+            return blockInfoGlobal;
         }
 
         BlockPos belowPos = pos.below();
-        if (!isSafe(level, belowPos)) return null;
+        if (!isSafe(level, belowPos)) {
+            return blockInfoGlobal;
+        }
         BlockState stateBelow = level.getBlockState(belowPos);
         
-        // If the block below is already solid, just become a fitting solid block
-        // This also enables "collusion": if a marker above already built a support here, we just anchor to it!
+        // If the block below is solid, adapt to the actual floor (belowPos)
         if (stateBelow.isSolidRender(level, belowPos) || stateBelow.canOcclude()) {
-            return new StructureTemplate.StructureBlockInfo(blockInfoGlobal.pos(), getPredominantNaturalBlock(level, belowPos), null);
+            BlockState predominant = getPredominantNaturalBlock(level, belowPos);
+            return new StructureTemplate.StructureBlockInfo(blockInfoGlobal.pos(), predominant, blockInfoGlobal.nbt());
         }
 
-        // If it's floating, search for the nearest solid natural block in a larger radius
+        // If it's floating, search for the nearest solid natural block to build a wedge/slope
         int searchRadiusH = 6;
-        int searchRadiusV = 18; // As requested, up to 18 blocks
+        int searchRadiusV = 18; 
         BlockPos closestSolid = null;
         double minDistance = Double.MAX_VALUE;
 
@@ -61,12 +75,13 @@ public class SolidGroundMarkerProcessor extends StructureProcessor {
         }
 
         if (closestSolid != null) {
-            BlockState predominant = getPredominantNaturalBlock(level, closestSolid);
-            buildSupportLedge(worldGenLevel, blockInfoGlobal.pos(), closestSolid, predominant);
-            return new StructureTemplate.StructureBlockInfo(blockInfoGlobal.pos(), predominant, null);
+            BlockState mountainPredominant = getPredominantNaturalBlock(level, closestSolid);
+            buildSupportLedge(worldGenLevel, blockInfoGlobal.pos(), closestSolid, mountainPredominant);
+            return new StructureTemplate.StructureBlockInfo(blockInfoGlobal.pos(), mountainPredominant, blockInfoGlobal.nbt());
         }
         
-        return null; // Too high up or no mountain nearby, do not spawn anything
+        BlockState fallbackPredominant = getPredominantNaturalBlock(level, pos);
+        return new StructureTemplate.StructureBlockInfo(blockInfoGlobal.pos(), fallbackPredominant, blockInfoGlobal.nbt());
     }
 
     private BlockState getPredominantNaturalBlock(LevelReader level, BlockPos center) {
@@ -78,9 +93,9 @@ public class SolidGroundMarkerProcessor extends StructureProcessor {
                     if (!isSafe(level, p)) continue;
                     BlockState s = level.getBlockState(p);
                     if (isNaturalBlock(s)) {
-                        // Normalize grass block to dirt for the support structure to look better
-                        if (s.getBlock().getDescriptionId().endsWith(".grass_block")) {
-                            s = net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState();
+                        if (s.getBlock() == Blocks.GRASS_BLOCK) {
+                            // Convert grass to dirt if it's underground, but since we want the surface block, keep grass if exposed?
+                            // For simplicity, let's keep the block exactly as is to adapt perfectly to the biome (e.g. sand, podzol)
                         }
                         counts.put(s, counts.getOrDefault(s, 0) + 1);
                     }
@@ -88,7 +103,7 @@ public class SolidGroundMarkerProcessor extends StructureProcessor {
             }
         }
 
-        BlockState predominant = net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState();
+        BlockState predominant = Blocks.DIRT.defaultBlockState();
         int max = 0;
         for (Map.Entry<BlockState, Integer> entry : counts.entrySet()) {
             if (entry.getValue() > max) {
@@ -119,25 +134,23 @@ public class SolidGroundMarkerProcessor extends StructureProcessor {
         Random random = new Random(start.asLong());
         
         for (int i = 1; i <= steps; i++) {
-            double t = (double) i / steps;
+            double t = (double) i / steps; // 0 = structure, 1 = mountain
             int x = (int) Math.round(start.getX() + t * (end.getX() - start.getX()));
             int y = (int) Math.round(start.getY() + t * (end.getY() - start.getY()));
             int z = (int) Math.round(start.getZ() + t * (end.getZ() - start.getZ()));
             
-            // Add slight wobble, tapering off near the end
             int noiseX = (int) (Math.sin(t * Math.PI * 4 + start.getX()) * 1.5 * (1.0 - t));
             int noiseZ = (int) (Math.cos(t * Math.PI * 4 + start.getZ()) * 1.5 * (1.0 - t));
             
             BlockPos centerP = new BlockPos(x + noiseX, y, z + noiseZ);
             placeIfEmpty(level, centerP, state);
             
-            // Thicken to make it look robust and natural
-            // Thicker at the top (near structure), thinner at the bottom
-            int thickness = (int) (3 * (1.0 - t) + random.nextInt(2));
+            // Triangle wedge: thick at the mountain (t=1), thin at the structure (t=0)
+            int thickness = (int) (4 * t + random.nextInt(2)); 
             if (thickness > 0) {
-                for (int tx = -thickness/2; tx <= thickness/2; tx++) {
-                    for (int tz = -thickness/2; tz <= thickness/2; tz++) {
-                        if (tx*tx + tz*tz <= (thickness*thickness)/4.0 + 0.5) {
+                for (int tx = -thickness; tx <= thickness; tx++) {
+                    for (int tz = -thickness; tz <= thickness; tz++) {
+                        if (tx*tx + tz*tz <= (thickness*thickness) + 0.5) {
                             if (random.nextFloat() < 0.7f) {
                                 placeIfEmpty(level, centerP.offset(tx, 0, tz), state);
                             }
@@ -161,6 +174,6 @@ public class SolidGroundMarkerProcessor extends StructureProcessor {
 
     @Override
     protected StructureProcessorType<?> getType() {
-        return net.denmoth.cso.CSOMain.SOLID_GROUND_MARKER;
+        return CSOMain.TERRAIN_BLEND_PROCESSOR;
     }
 }
