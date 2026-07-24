@@ -112,40 +112,6 @@ public class SolidGroundMarkerProcessor extends StructureProcessor {
     }
 
     private void buildSupportLedge(WorldGenLevel level, BlockPos start, BlockPos end, BlockState state) {
-        double dist = Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2) + Math.pow(end.getZ() - start.getZ(), 2));
-        int steps = (int) Math.ceil(dist);
-        if (steps <= 0) return;
-        
-        Random random = new Random(start.asLong());
-        
-        for (int i = 1; i <= steps; i++) {
-            double t = (double) i / steps;
-            int x = (int) Math.round(start.getX() + t * (end.getX() - start.getX()));
-            int y = (int) Math.round(start.getY() + t * (end.getY() - start.getY()));
-            int z = (int) Math.round(start.getZ() + t * (end.getZ() - start.getZ()));
-            
-            // Add slight wobble, tapering off near the end
-            int noiseX = (int) (Math.sin(t * Math.PI * 4 + start.getX()) * 1.5 * (1.0 - t));
-            int noiseZ = (int) (Math.cos(t * Math.PI * 4 + start.getZ()) * 1.5 * (1.0 - t));
-            
-            BlockPos centerP = new BlockPos(x + noiseX, y, z + noiseZ);
-            placeIfEmpty(level, centerP, state);
-            
-            // Thicken to make it look robust and natural
-            // Thicker at the top (near structure), thinner at the bottom
-            int thickness = (int) (3 * (1.0 - t) + random.nextInt(2));
-            if (thickness > 0) {
-                for (int tx = -thickness/2; tx <= thickness/2; tx++) {
-                    for (int tz = -thickness/2; tz <= thickness/2; tz++) {
-                        if (tx*tx + tz*tz <= (thickness*thickness)/4.0 + 0.5) {
-                            if (random.nextFloat() < 0.7f) {
-                                placeIfEmpty(level, centerP.offset(tx, 0, tz), state);
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
     private void placeIfEmpty(WorldGenLevel level, BlockPos pos, BlockState state) {
