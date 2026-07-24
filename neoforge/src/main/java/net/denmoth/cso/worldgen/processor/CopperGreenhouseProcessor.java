@@ -101,8 +101,9 @@ public class CopperGreenhouseProcessor extends StructureProcessor {
             if (level instanceof net.minecraft.world.level.ServerLevelAccessor serverLevelAccessor) {
                 net.minecraft.server.MinecraftServer server = serverLevelAccessor.getServer();
                 if (server != null) {
-                    ResourceLocation lootTableId = new ResourceLocation(blockInfoOut.nbt().getString("LootTable"));
-                    net.minecraft.world.level.storage.loot.LootTable lootTable = server.getLootData().getLootTable(lootTableId);
+                    ResourceLocation lootTableId = ResourceLocation.parse(blockInfoOut.nbt().getString("LootTable"));
+                    net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable> lootKey = net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.LOOT_TABLE, lootTableId);
+                    net.minecraft.world.level.storage.loot.LootTable lootTable = server.reloadableRegistries().getLootTable(lootKey);
                     net.minecraft.world.level.storage.loot.LootParams params = new net.minecraft.world.level.storage.loot.LootParams.Builder(serverLevelAccessor.getLevel())
                             .withParameter(net.minecraft.world.level.storage.loot.parameters.LootContextParams.ORIGIN, net.minecraft.world.phys.Vec3.atCenterOf(pos))
                             .create(net.minecraft.world.level.storage.loot.parameters.LootContextParamSets.CHEST);
@@ -132,7 +133,7 @@ public class CopperGreenhouseProcessor extends StructureProcessor {
                     newNbt.remove("LootTableSeed");
                     net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> nonNullLoot = net.minecraft.core.NonNullList.create();
                     nonNullLoot.addAll(loot);
-                    net.minecraft.world.ContainerHelper.saveAllItems(newNbt, nonNullLoot);
+                    net.minecraft.world.ContainerHelper.saveAllItems(newNbt, nonNullLoot, serverLevelAccessor.registryAccess());
                     
                     return new StructureTemplate.StructureBlockInfo(blockInfoOut.pos(), blockInfoOut.state(), newNbt);
                 }
@@ -173,7 +174,7 @@ public class CopperGreenhouseProcessor extends StructureProcessor {
             };
             
             for (String selected : crops) {
-                Block block = BuiltInRegistries.BLOCK.get(new ResourceLocation(selected));
+                Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(selected));
                 if (block != Blocks.AIR) {
                     localList.add(block);
                 }
