@@ -31,7 +31,6 @@ public class CSONeoForge {
     
     private void onLevelTick(net.neoforged.neoforge.event.tick.LevelTickEvent.Post event) {
         if (event.getLevel() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
-            net.denmoth.cso.event.CSOEventTracker.tick(serverLevel);
         }
     }
 }

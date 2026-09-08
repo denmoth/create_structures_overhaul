@@ -1,6 +1,6 @@
 {
-  "advancements.cso.root.title": "Create: Boks Ovrhaulz",
-  "advancements.cso.root.desc": "Findz boks added by teh mod",
+  "advancements.cso.don_quixote.title": "Don Keh-ho-teh",
+  "advancements.cso.don_quixote.desc": "Findz a spinny thing",
   "advancements.cso.windmills.title": "Spinny Thingz",
   "advancements.cso.windmills.desc": "Findz a spinny thing",
   "advancements.cso.windmills_all.title": "Spinny Hoarder",
@@ -23,6 +23,8 @@
   "advancements.cso.category_complete.desc": "Dun one hole parts of boks",
   "advancements.cso.all.title": "Mastur of teh Boks",
   "advancements.cso.all.desc": "Findz evry single boks!!11!",
+  "advancements.cso.root.title": "Create: Boks Ovrhaulz",
+  "advancements.cso.root.desc": "Findz a boks added by teh mod",
   "cso.config.error": "CSO Config Error: Invalid file format. Using fallback default values.",
   "cso.config.title": "CSO Configuration",
   "cso.config.category.general": "General Options",

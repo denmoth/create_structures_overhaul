@@ -41,7 +41,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "cso:lightning_rod_tower"
+                "structure": "cso:lightningrodtower"
               }
             }
           }

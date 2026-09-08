@@ -15,9 +15,6 @@ sourceSets {
         resources {
             srcDir project.file('../common/src/main/resources')
         }
-        java {
-            srcDir project.file('../common/src/main/java')
-        }
     }
 }
 
@@ -25,6 +22,7 @@ repositories {
     mavenLocal()
     mavenCentral()
     maven { url = 'https://maven.neoforged.net/releases/' }
+    maven { url = "https://maven.shedaniel.me/" }
 }
 
 dependencies {
@@ -32,6 +30,7 @@ dependencies {
     mappings loom.officialMojangMappings()
 
     neoForge "net.neoforged:neoforge:21.1.10"
+    modCompileOnly "me.shedaniel.cloth:cloth-config-neoforge:15.0.127"
 }
 
 processResources {
@@ -51,6 +50,12 @@ processResources {
     inputs.properties expandProps
     filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml', 'pack.mcmeta']) {
         expand expandProps
+    }
+    doLast {
+        def destDir = file("$buildDir/resources/main/data/cso")
+        if (file("$destDir/structures").exists()) file("$destDir/structures").renameTo(file("$destDir/structure"))
+        if (file("$destDir/advancements").exists()) file("$destDir/advancements").renameTo(file("$destDir/advancement"))
+        if (file("$destDir/loot_tables").exists()) file("$destDir/loot_tables").renameTo(file("$destDir/loot_table"))
     }
 }
 

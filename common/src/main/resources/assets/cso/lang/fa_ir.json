@@ -32,5 +32,7 @@
   "cso.config.enable_industrial": "Enable Industrial Structures",
   "cso.config.inject_into_villages": "Inject Into Villages",
   "cso.config.default_spacing": "Default Spacing",
-  "cso.config.default_separation": "Default Separation"
+  "cso.config.default_separation": "Default Separation",
+  "advancements.cso.don_quixote.title": "دن کیشوت",
+  "advancements.cso.don_quixote.desc": "هر آسیاب بادی را پیدا کنید"
 }

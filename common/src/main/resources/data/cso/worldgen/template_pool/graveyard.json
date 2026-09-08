@@ -17,6 +17,9 @@
                   "Name": "minecraft:structure_block"
                 }
               ]
+            },
+            {
+              "processor_type": "cso:terrain_blend_processor"
             }
           ]
         }

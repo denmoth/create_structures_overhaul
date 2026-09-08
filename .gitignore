@@ -43,3 +43,5 @@ cf_temp/
 *.bak
 *.log
 jdk17.zip
+*_tmp
+*_temp

@@ -17,6 +17,12 @@
                   "Name": "minecraft:structure_block"
                 }
               ]
+            },
+            {
+              "processor_type": "cso:copper_greenhouse_processor"
+            },
+            {
+              "processor_type": "cso:terrain_blend_processor"
             }
           ]
         }

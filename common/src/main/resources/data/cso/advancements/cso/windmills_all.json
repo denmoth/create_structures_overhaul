@@ -9,8 +9,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "cso:windmill",
-                "biome": "#minecraft:is_savanna"
+                "structure": "cso:acaciawindmill"
               }
             }
           }
@@ -26,8 +25,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "cso:windmill",
-                "biome": "#minecraft:is_birch_forest"
+                "structure": "cso:birchwindmill"
               }
             }
           }
@@ -43,8 +41,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "cso:windmill",
-                "biome": "minecraft:cherry_grove"
+                "structure": "cso:cherrywindmill"
               }
             }
           }
@@ -60,8 +57,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "cso:windmill",
-                "biome": "#minecraft:is_forest"
+                "structure": "cso:oakwindmill"
               }
             }
           }
@@ -77,8 +73,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "cso:windmill",
-                "biome": "#minecraft:is_taiga"
+                "structure": "cso:sprucewindmill"
               }
             }
           }
