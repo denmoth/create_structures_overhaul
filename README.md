@@ -28,6 +28,7 @@
     [Create: Structures Overhaul – BOP Integration](https://www.curseforge.com/minecraft/mc-mods/create-structures-overhaul-bop-integration)
 *   Blends naturally with environments and matches Create’s aesthetics.
 *   Lightweight and optimized for performance.
+*   Configurable for more customized modpacks.
 
 ***
 
@@ -35,8 +36,6 @@
 
 *   Minecraft Fabric 1.20.1 / Forge 1.19.2+ / NeoForge 1.21.1
 *   [Create](https://www.curseforge.com/minecraft/mc-mods/create) mod installed
-*   For Fabric users, it is recommended to install this [texture pack](https://modrinth.com/resourcepack/create-new-copper-stuffs) to see the newest Create copper block textures.
-
 ***
 
 ## License
